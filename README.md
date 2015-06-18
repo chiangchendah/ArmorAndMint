@@ -6,7 +6,7 @@
 
   - __Product Owner__: Sean Grogg
   - __Scrum Master__: Michael Symmes
-  - __Development Team Members__: Billy Rukh, Tyler Travers, Michael Symmes, Sean Grogg
+  - __Development Team Members__: Billy Rukh, Michael Symmes, Sean Grogg
 
 ## Table of Contents
 
