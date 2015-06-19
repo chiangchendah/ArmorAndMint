@@ -3,8 +3,9 @@
 LightCMS is a lightweight, minimalist CMS that makes creating and updating your content simple.
 
 ## Features ##
-* Streamlined, intuitive interface
-* Supports Markdown
+  * Streamlined, intuitive interface
+  * Lightweight, minimalist principles
+  * Supports Markdown
 
 ## Who are _you_? ##
 You're a writer. You've worked with other similar products, such as WordPress or Drupal. You're tired of dealing with labyrinthine admin panels that place a greater emphasis on "management" than they do "content". You want a tool that doesn't just work, but works for you - one that makes intuitive sense without sacrificing performance. You want LightCMS because writing can be just that easy.
