@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/ArmorAndMint/ArmorAndMint.png?label=ready&title=Ready)](https://waffle.io/ArmorAndMint/ArmorAndMint)
 # Armor And Mint
 
 > Minimalist Content Management System built on the MEAN Stack
