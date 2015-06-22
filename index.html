@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LightCMS</title>
+        <meta name="description" content="LightCMS is a lightweight, minimalist CMS that makes creating and updating your content simple.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Typekit Access -->
+
+        <script type="text/javascript" src="//use.typekit.net/ssf3mxn.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+    </head>
+    <body>
+        <script>document.body.className+=' has-js';</script>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <section class="hero">
+            <div class="container">
+                <div class="inner">
+                    <h1 class="logo bounce-animation">LightCMS</h1>
+                    <p>LightCMS is a lightweight, minimalist CMS that makes creating and updating your content simple.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container info">
+                <div class="inner">
+                    <h2>Features</h2>
+                    <div class="col col-1">
+                        <h3>Streamlined, intuitive interface</h3>
+                        <p>Focus on your content - we'll take care of the rest.</p>
+
+                        <h3>Lightweight, minimalist principles</h3>
+                        <p>Small footprint with a believe in less is more.</p>
+
+                        <h3>Markdown support</h3>
+                        <p>Use markdown to quickly and easily write content.</p>
+                    </div>
+
+                    <div class="col col-2">
+                        <h3>Quickly create and edit posts</h3>
+                        <p>No admin pages or unnecessary routing to create and edit content. </p>
+
+                        <h3>Open source </h3>
+                        <p>Check us out on Github to contribute!</p>
+
+                        <h3>Another Feature</h3>
+                        <p>Description here.</p>
+                    </div>
+
+                    <div class="button-container">
+                        <a class="button stroke github" href="https://github.com/ArmorAndMint/ArmorAndMint" target="_blank"> LightCMS on Github</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <footer>
+            <div class="container">
+                <p>&copy; Add footer stuff here if we need it :D</p>
+            </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/TweenLite.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/easing/EasePack.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/jquery.gsap.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.12.1/plugins/CSSPlugin.min.js"></script>
+        <script src="js/scripts.min.js"></script>
+
+
+        <!-- Easing transitions for paragraphs -->
+
+        <script>
+            $(function(){
+
+                TweenLite.from($('.hero p').css('visibility', 'visible'), .4, {
+                    opacity: 0,
+                    y: 50,
+                    scale: .9,
+                    ease: Back.easeOut,
+                    delay: .4
+                });
+
+                TweenLite.from($('.hero form').css('visibility', 'visible'), .4, {
+                    opacity: 0,
+                    y: 50,
+                    scale: .98,
+                    ease: Back.easeOut,
+                    delay: .5
+                });
+
+
+
+                $columns = $('.col');
+
+                $columns.bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
+                  if (isInView) {
+                    $('.col-1 > *').each(function(i, el){
+                        $el = $(el);
+                        TweenLite.from($el.css('visibility', 'visible'), .6, {
+                            // x: -200,
+                            y: 100,
+                            delay: i * .05,
+                            ease: Back.easeOut,
+                            opacity: 0
+                        });
+                    });
+                    $('.col-2 > *').each(function(i, el){
+                        $el = $(el);
+                        TweenLite.from($el.css('visibility', 'visible'), .65, {
+                            // x: 200,
+                            y: 100,
+                            delay: i * .05,
+                            ease: Back.easeInOut,
+                            opacity: 0
+                        });
+                    });
+
+                    // $('.col-1')
+                    $columns.unbind('inview')
+                  }
+                });
+
+                $(window).trigger('checkInView')
+            });
+
+            /* Created at Hack Reactor banner */
+
+            $('body').append(
+                    '<a href="http://hackreactor.com"> \
+                    <img style="position: fixed; top: 0; right: 0; border: 0;" \
+                    src="http://i.imgur.com/x86kKmF.png" \
+                    alt="Built at Hack Reactor"> \
+                    </a>'
+            );
+        </script>
+    </body>
+</html>
