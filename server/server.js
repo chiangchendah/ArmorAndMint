@@ -1,28 +1,19 @@
-// config/requirements
-var mongoose = require('mongoose');
+// External modules
+var mongoose = require('mongoose'),
 
-// we are delegating our express configuration and setup to this file
-var express = require('./config/express');
+// Internal modules
+    express = require('./config/express'), // we are delegating our express configuration and setup to this file
+    config = require('./config/config'), // app specific configuration can be done in this file
 
-// app specific configuration can be done in this file
-var config = require('./config/config');
+// Modular variables
+    db = mongoose.connection; // create a db connection
 
-// create a db connection
-var db = mongoose.connection;
 
-// create a connection string -> 'mongodb://localhost/test'
-var dbConnectionString = 'mongodb://' + config.db.url + '/' + config.db.name;
-
-// create the connection
-mongoose.connect(dbConnectionString);
-
-// Database Error handling
-db.on('error', console.error.bind(console, 'connection error:'));
+var dbConnectionString = 'mongodb://' + config.db.url + ':' + config.db.port + '/' + config.db.name; // create a connection string -> 'mongodb://localhost:port/test'
+mongoose.connect(dbConnectionString); // create the connection
+db.on('error', console.error.bind(console, 'connection error:')); // Database Error handling
 
 // Run our entire app inside the database connection callback
 db.once('open', function (callback) {
-  // call our express configuration/setup here
-  var app = express();
+  var app = express(); // call our express configuration/setup here
 });
-
-

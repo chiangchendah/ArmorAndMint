@@ -1,14 +1,23 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var config = require('./config');
+// External modules
+var express = require('express'),
+    path = require('path'),
 
-// we are exporting this block of code so that it can be run from
-// inside our main server file. mainly just so we can keep
-// concerns seperated into their own files.
+// Internal modules
+    config = require('./config'),
+
+// Modular variables
+    app = express();
+
+// Server setup, files, and routing are exported from here
 module.exports = function() {
+  var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
 
-  // routes and/or inclusions of module specific routes can be done here
+  // Routing logic
+  app.get('/', function(req, res){ //root route
+    res.sendFile('index.html', options, function(err){
+      if (err) throw err;
+    });
+  });
 
   // serve assets from our client directory
   app.use(express.static(path.join(__dirname, '../../client')));
@@ -18,5 +27,4 @@ module.exports = function() {
   console.log('Listening on port ' + config.port);
 
   return app;
-
 };

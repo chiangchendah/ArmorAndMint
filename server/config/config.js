@@ -1,15 +1,12 @@
 // this file contains 'global' configuration info
 module.exports = {
 
-  // the server port
-  port: process.env.PORT || 8080,
+  port: process.env.PORT || 8080, // the server port
 
-  // database info
   db: {
-    // this may need to change for a hosted solution
-    url: 'localhost',
-    // the name of the database itself
+    // This object is used to create the database connection string
+    url: '127.0.0.1',
+    port: process.env.MONGO || 27017,
     name: 'lightCMS'
   },
-
 };
