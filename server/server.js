@@ -1,12 +1,12 @@
 // External modules
-var mongoose = require('mongoose'),
+var mongoose = require('mongoose');
 
 // Internal modules
-    express = require('./config/express'), // we are delegating our express configuration and setup to this file
-    config = require('./config/config'), // app specific configuration can be done in this file
+var express = require('./config/express'); // we are delegating our express configuration and setup to this file
+var config = require('./config/config'); // app specific configuration can be done in this file
 
 // Modular variables
-    db = mongoose.connection; // create a db connection
+var db = mongoose.connection; // create a db connection
 
 
 var dbConnectionString = 'mongodb://' + config.db.url + ':' + config.db.port + '/' + config.db.name; // create a connection string -> 'mongodb://localhost:port/test'
