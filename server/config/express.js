@@ -1,4 +1,5 @@
-//This file handles the express-specific logic, such as server setup and request handling
+// This file handles the express-specific logic,
+// such as server setup and request handling
 
 // External modules
 var express = require('express');
@@ -6,7 +7,7 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-// are we sure we need this? can passport not work with just sessions?
+// are we sure we need this?
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -39,6 +40,8 @@ passport.deserializeUser(User.deserializeUser());
 // Server setup, files, and routing are exported from here
 module.exports = function() {
 
+  // could make this its own express router?
+  // -> http://expressjs.com/api.html#router
   require('../routes/user.routes.js')(app, passport);
 
   // handle 404s
