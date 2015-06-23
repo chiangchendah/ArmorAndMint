@@ -5,6 +5,7 @@ module.exports = function(app, passport) {
   console.log('Test!');
 
   app.get('/', function(req, res){
+    // is there even any reason to call user.find here??
     User.find(function(err, doc){
       // TODO: something different here
       if(doc.length === 0){
@@ -29,7 +30,8 @@ module.exports = function(app, passport) {
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
-    // why are we redirecting here - what should the authentication method have returned?
+    // why are we redirecting here -
+    // what should the authentication method have returned?
     res.redirect('/');
   });
 };

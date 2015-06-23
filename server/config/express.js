@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // passport config
+// can this go in the user files instead?
 var User = require('../models/user.model');
 app.use(passport.initialize());
 app.use(passport.session());
