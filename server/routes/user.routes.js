@@ -1,32 +1,30 @@
-var User = require('../models/user.model');
+var User = require('../controllers/user.controller.js');
 
 module.exports = function(app, passport) {
-  var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
   console.log('Test!');
 
-  app.get('/', function(req, res){
-    // is there even any reason to call user.find here??
-    User.find(function(err, doc){
-      // TODO: something different here
-      if(doc.length === 0){
-        res.sendFile('register.html', options);
-      } else {
-        res.sendFile('index.html', options);
-      }
-    });
-  });
+  // TODO: Move appropriate functions out into
+  // the user controller file.
+
+  // this probably should be in the main express file.
+  // and just not find users??
+  // app.get('/', function(req, res){
+  //   // is there even any reason to call user.find here??
+  //   User.find(function(err, doc){
+  //     // TODO: something different here
+  //     if(doc.length === 0){
+  //       res.sendFile('register.html', options);
+  //     } else {
+  //       res.sendFile('index.html', options);
+  //     }
+  //   });
+  // });
 
   // http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.VYiH3hNVhHw
 
-  app.post('/register', function(req, res) {
+  app.post('/register', function(req, res, next) {
     console.log(req.body);
-    User.register(new User({ username : req.body.username }),
-      req.body.password, function(err, user) {
-        if (err) { return res.json({ user : user }); }
-        passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
-        });
-      });
+    User.register(req, res, next, passport);
   });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {

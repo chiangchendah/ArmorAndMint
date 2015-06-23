@@ -14,5 +14,6 @@ db.on('error', console.error.bind(console, 'connection error:')); // Database Er
 
 // Run our entire app inside the database connection callback
 db.once('open', function (callback) {
+  // im not sure this is necessary?
   var app = express(); // call our express configuration/setup here
 });

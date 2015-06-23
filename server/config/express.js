@@ -21,15 +21,15 @@ var app = express();
 // Express configuration
 // may use something like dev || combined ->OR-> config.logState
 app.use(morgan("dev"));
-app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.session({ secret: 'keyboard cat' }));
+//app.use(express.session({ secret: 'keyboard cat' }));
 
+app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
 
 // passport config
-// can this go in the user files instead?
+// this could maybe be moved to the files that need it
 var User = require('../models/user.model');
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,6 +39,18 @@ passport.deserializeUser(User.deserializeUser());
 
 // Server setup, files, and routing are exported from here
 module.exports = function() {
+  var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
+
+  // index route -> returns index.html
+  app.get('/',
+    // no authentication needed, because index.html should always be served
+    function(req, res){
+      res.sendFile('index.html', options);
+    }
+  );
+
+  // add an api route for handling content posts and requests
+  // this should always be authenticated for POST events
 
   // could make this its own express router?
   // -> http://expressjs.com/api.html#router
