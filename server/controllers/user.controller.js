@@ -1,10 +1,11 @@
 var User = require('../models/user.model');
 var jwt  = require('jwt-simple');
+var passport = require('passport');
 
 module.exports = {
 
   // signup / register a user
-  register: function(req, res, next, passport) {
+  register: function(req, res, next) {
     // register is provided by passport
     User.register(new User({ username : req.body.username }),
       req.body.password,
@@ -21,6 +22,9 @@ module.exports = {
           res.json({token: token});
         });
       });
+  },
+  signin: function(req, res, next, passport){
+
   }
 
 };
