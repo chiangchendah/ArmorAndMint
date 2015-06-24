@@ -14,5 +14,13 @@ module.exports = {
       //res.json(results);
 
     });
+  },
+  findOne: function(req, res) {
+    // find one article (by id)
+
+  },
+  create: function(req, res) {
+    // Create a new article
+
   }
 };
