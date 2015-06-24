@@ -17,24 +17,21 @@ module.exports = function(app) {
     })
     .post(function(req, res) {
       // create a new article
-      console.log(req.body);
-      console.log('Trying to create a new article');
-      res.json('You tried to create a new article');
+      Article.create(req, res);
     });
 
     // specific article crud
     app.route('/articles/:article_id')
       .get(function(req, res) {
         // retrieve and return 1 article
-        console.log('You requested: ', req.params.article_id);
-        res.json('You requested article id: ', req.params.article_id);
+        Article.findOne(req, res);
       })
       .put(function(req, res){
         // update a single article
-        console.log('You attempted to update: ', req.params.article_id);
-        res.json('You attempted to update: ', req.params.article_id);
+        Article.update(req, res);
       })
       .delete(function(req, res){
+        // TODO: Wire this up
         // delete an article
         console.log('You attempted to delete: ', req.params.article_id);
         res.json('You attempted to delete: ', req.params.article_id);
