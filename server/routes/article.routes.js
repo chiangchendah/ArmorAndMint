@@ -11,11 +11,13 @@ module.exports = function(app) {
   app.route('/articles')
     .get(function(req, res) {
       // Call the article controller and ask for a list of articles
-      console.log('Return a list of articles here instead of this stub.');
-      res.json([{title: 'A day in the sun', createdOn: new Date.now(), content: 'Enjoy!', owner: 'Admin'}]);
+      //console.log('Return a list of articles here instead of this stub.');
+      // res.json([{title: 'A day in the sun', createdOn: new Date.now(), content: 'Enjoy!', owner: 'Admin'}]);
+      Article.findAll(res);
     })
     .post(function(req, res) {
       // create a new article
+      console.log(req.body);
       console.log('Trying to create a new article');
       res.json('You tried to create a new article');
     });
