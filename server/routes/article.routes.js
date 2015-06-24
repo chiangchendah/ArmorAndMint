@@ -11,8 +11,6 @@ module.exports = function(app) {
   app.route('/articles')
     .get(function(req, res) {
       // Call the article controller and ask for a list of articles
-      //console.log('Return a list of articles here instead of this stub.');
-      // res.json([{title: 'A day in the sun', createdOn: new Date.now(), content: 'Enjoy!', owner: 'Admin'}]);
       Article.findAll(res);
     })
     .post(function(req, res) {
@@ -31,8 +29,8 @@ module.exports = function(app) {
         Article.update(req, res);
       })
       .delete(function(req, res){
-        // TODO: Wire this up
         // delete an article
+        // TODO: Wire this up
         console.log('You attempted to delete: ', req.params.article_id);
         res.json('You attempted to delete: ', req.params.article_id);
       });
