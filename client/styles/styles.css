@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100%;
+  background-color: lightblue;
+  border-bottom: 2px solid darkgreen;
+}
+header > h1 {
+  display: inline-block;
+}
+header > h5 {
+  display: inline-block;
+  font-size: .5em;
+}
+nav {
+  float: right;
+}
+nav > a {
+  display: inline-block;
+  font-size: .5em;
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 1px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+}
+nav > a:hover {
+  border: 1px solid red;
+  border-radius: 15px;
+  background-color: grey;
+  color: red;
+

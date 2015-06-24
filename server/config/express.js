@@ -1,74 +1,65 @@
-//This file handles the express-specific logic, such as server setup and request handling
+// This file handles the express-specific logic,
+// such as server setup and request handling
 
 // External modules
-var express = require('express'),
-    path = require('path'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
+var express = require('express');
+var path = require('path');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 // Internal modules
-    config = require('./config'),
+var config = require('./config');
 
 // Modular variables
-    app = express();
+var app = express();
 
 // Express configuration
-app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
+// may use something like dev || combined ->OR-> config.logState
+app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.session({ secret: 'keyboard cat' }));
-app.use(passport.initialize());
-app.use(passport.session());
+//app.use(express.session({ secret: 'keyboard cat' }));
+
+app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
 
 // passport config
-var Account = require('../models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+// this could maybe be moved to the files that need it
+var User = require('../models/user.model');
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Server setup, files, and routing are exported from here
 module.exports = function() {
   var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
 
-  // Routing logic
-  // Root
-  app.get('/', function(req, res){ //root route
-    Account.find(function(err, doc){
-      if(doc.length === 0){
-        res.sendFile('register.html', options);
-      } else {
-        res.sendFile('index.html', options);
-      }
-    });
-  });
-  // 404 page not found
-  app.get('/404', function(req, res){
-    //send a 404 page not found file
-    res.send('404 - Page not found') //placeholder
-  });
-  // 401 unauthorized
-  app.get('/401', function(req, res){
-    //send a 401 unauthorized (login failed) page
-    res.send('401 - Unauthorized') //placeholder
-  });
-
-  // http://mherman.org/blog/2015/01/31/local-authentication-with-passport-and-express-4/#.VYiH3hNVhHw
-
-  app.post('/register', function(req, res) {
-    console.log(req.body);
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-      if (err) { return res.json({ account : account }); }
-      passport.authenticate('local')(req, res, function () {
-        res.redirect('/');
+  app.get('/', function(req, res){
+      User.find(function(err, doc){
+        if(doc.length === 0){
+          res.sendFile('app/user/register.html', options);
+        } else {
+          res.sendFile('index.html', options);
+        }
       });
     });
-  });
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+  // add an api route for handling content posts and requests
+  // this should always be authenticated for POST events
+
+  // could make this its own express router?
+  // -> http://expressjs.com/api.html#router
+  require('../routes/user.routes.js')(app, passport);
+
+  // handle 404s
+  app.use(function(req, res, next) {
+    res.status(404).send('Sorry cant find that!');
   });
 
   // start the server
