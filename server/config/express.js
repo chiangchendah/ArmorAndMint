@@ -7,7 +7,6 @@ var path = require('path');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
-// are we sure we need this?
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -41,13 +40,15 @@ passport.deserializeUser(User.deserializeUser());
 module.exports = function() {
   var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
 
-  // index route -> returns index.html
-  app.get('/',
-    // no authentication needed, because index.html should always be served
-    function(req, res){
-      res.sendFile('index.html', options);
-    }
-  );
+  app.get('/', function(req, res){
+      User.find(function(err, doc){
+        if(doc.length === 0){
+          res.sendFile('app/user/register.html', options);
+        } else {
+          res.sendFile('index.html', options);
+        }
+      });
+    });
 
   // add an api route for handling content posts and requests
   // this should always be authenticated for POST events
