@@ -25,14 +25,6 @@ var app = angular.module('lightCMS', ['ui.router'])
         url: "/user/signin",
         templateUrl: "app/user/signin.html"
       });
-
-      // .state('state2.list', {
-      //   url: "/list",
-      //   templateUrl: "partials/state2.list.html",
-      //   controller: function($scope) {
-      //     $scope.things = ["A", "Set", "Of", "Things"];
-      //   }
-      // });
   });
 
 
