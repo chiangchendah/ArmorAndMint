@@ -9,7 +9,8 @@ var paths = {
   scripts: ['client/app/**/*.js'],
   html: ['client/app/**/*.html', 'client/index.html'],
   styles: ['client/styles/*.css'],
-  test: ['client/app/**/specs/*.js']
+  test: ['client/app/**/specs/*.js'],
+  server: 'server/server.js'
 };
 
 // start the dev server and then run browser-sync
@@ -24,7 +25,7 @@ gulp.task('start', ['serve'],function () {
 
 // start our node server using nodemon
 gulp.task('serve', function() {
-  nodemon({script: 'server/server.js', ignore: 'node_modules/**/*.js'});
+  nodemon({script: paths.server, ignore: 'node_modules/**/*.js'});
 });
 
 gulp.task('default', ['start']);
