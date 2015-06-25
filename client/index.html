@@ -102,4 +102,24 @@
 
   </body>
 
+
+  <!-- Scripts
+   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script>
+
+    /* EDIT BUTTON */
+
+    $( document ).ready(function() {
+      console.log( "ready!" );
+      $(".spacer").mouseenter(function() {
+        $(".edit-content").css("display", "inline");
+      }).mouseleave(function() {
+        $("edit-content").css("display", "hidden");
+      });
+    });
+
+  </script>
+
 </html>
