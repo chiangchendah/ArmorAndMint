@@ -9,6 +9,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var morgan = require('morgan');
 
 // Internal modules
@@ -23,6 +24,7 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({secret: 'rainbow poptart cat'}));
 //app.use(express.session({ secret: 'keyboard cat' }));
 
 app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
