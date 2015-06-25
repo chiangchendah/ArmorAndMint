@@ -55,7 +55,10 @@ module.exports = function() {
 
   // could make this its own express router?
   // -> http://expressjs.com/api.html#router
-  require('../routes/user.routes.js')(app, passport);
+  require('../routes/user.routes.js')(app);
+
+  // article routes
+  require('../routes/article.routes.js')(app);
 
   // handle 404s
   app.use(function(req, res, next) {
