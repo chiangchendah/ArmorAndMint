@@ -1,2 +1,46 @@
-<h5>LISTS if you Insists!</h5>
-<!-- template for displaying a list of 'articles' goes here -->
+<!-- BLOG TIMELINE
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="timeline-container" ng-controller="ArticleController">
+<!-- wire this up to an angular repeats -->
+  <div class="post">
+    <h2>Becoming a Web Developer</h2>
+    <p>Through my time on Quora I've noticed a trend: many people want to learn to program but few really know what resources are at their disposal.</p>
+    <div class="row">
+      <img src="images/avatar.jpg" alt="avatar"/>
+      <h6>Billy Rukh | 09 June 2015 ->{{test}}</h6>
+    </div>
+  </div>
+
+  <div class="post">
+    <h2>On Being a Knight</h2>
+    <p>As the dust settles, I know with a certainty one can only achieve from a blend of training and experience that the battle has been won.</p>
+    <div class="row">
+      <img src="images/avatar.jpg" alt="avatar"/>
+      <h6>Billy Rukh | 09 June 2015</h6>
+    </div>
+  </div>
+
+  <div class="post">
+    <h2>Learning to Give Back</h2>
+    <p>Over the last few years of trying to become a competent web developer I've learned a lot of interesting things. Out of all the communities that</p>
+    <div class="row">
+      <img src="images/avatar.jpg" alt="avatar"/>
+      <h6>Billy Rukh | 09 June 2015</h6>
+    </div>
+  </div>
+</div>
+
+<div class="load">
+  <button>Load More</button>
+</div>
+
+<script>
+  /* EDIT BUTTON */
+  $( document ).ready(function() {
+    $(".spacer").mouseenter(function() {
+      $(".edit-content").css("display", "inline");
+    }).mouseleave(function() {
+      $("edit-content").css("display", "hidden");
+    });
+  });
+</script>
