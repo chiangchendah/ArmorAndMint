@@ -49,5 +49,12 @@ module.exports = {
       // send out the updated model
       res.json(result);
     });
+  },
+  remove: function(req, res){
+    // delete an article
+    Article.remove({_id: req.params.article_id}, function(err, result){
+      if (err) throw err;
+      res.json('You deleted: ', req.params.article_id);
+    });
   }
 };

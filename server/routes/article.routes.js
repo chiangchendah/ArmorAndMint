@@ -30,8 +30,6 @@ module.exports = function(app) {
       })
       .delete(function(req, res){
         // delete an article
-        // TODO: Wire this up
-        console.log('You attempted to delete: ', req.params.article_id);
-        res.json('You attempted to delete: ', req.params.article_id);
+        Article.remove(req, res);
       });
 };
