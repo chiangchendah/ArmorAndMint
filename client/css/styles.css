@@ -3,7 +3,10 @@
 
 h1 {
     display: inline;
-    font-size: 45px;
+    font-size: 35px;
+}
+button {
+    display: inline-block;
 }
 header {
     text-align: justify;
@@ -25,7 +28,7 @@ header::after {
 
 header nav button {
     margin-right: 5px;
-    font-size: 11px;
+    font-size: 10px;
     text-align: center;
 }
 
@@ -39,18 +42,19 @@ h6 {
 
 .main {
     text-align: center;
+
 }
 .main button {
 
     height: 30px;
-    margin-left: 5px;
     font-size: 12px;
+    text-align: center;
 }
 
 .main-avatar {
     display: block;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
@@ -58,19 +62,23 @@ h6 {
 }
 
 .main h3 {
-    font-size: 30px;
+    font-size: 27px;
+    display: block;
 }
 .main p {
     font-size: 20px;
     color: grey;
+    display: inline-block;
 }
 
 .spacer {
+
     margin-top: 20px;
     margin-bottom: 40px;
 }
 .edit-content {
     display: none;
+    margin-left: 5px;
 }
 
 /* BLOG TIMELINE */
@@ -90,11 +98,11 @@ h6 {
 
 .post h2 {
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .post p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 }
 .post img {
@@ -105,6 +113,13 @@ h6 {
     margin-bottom: -8px;
 }
 
+.post a {
+    color: #222222;
+    text-decoration: none;
+}
+.post a:hover {
+    text-decoration: underline;
+}
 
 .load {
     text-align:center;
