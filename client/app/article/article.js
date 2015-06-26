@@ -4,11 +4,11 @@
 angular.module('lightCMS.article', [])
     .controller('ArticleController', function($scope, Articles){
 
-    // mocks and stubs - delete at will
-    $scope.data = {};
-    $scope.test = Articles.test;
+      // mocks and stubs - delete at will
+      $scope.data = {};
 
-    // this will need some $scope methods for calling
-    // the Articles service, which will handle the http requests
-
-  });
+      // this will need some $scope methods for calling
+      // the Articles service, which will handle the http requests
+      Articles.fetchAll();
+      Articles.fetchOne('558b3aecb8506f2f03856194');
+    });
