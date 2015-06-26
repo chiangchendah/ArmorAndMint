@@ -4,7 +4,9 @@
 // server should conform to RESTful routes
 angular.module('lightCMS.ArticleService', [])
   .factory('Articles', function($http) {
-    var fetchAll = function(){
+    var article = {};
+
+    article.fetchAll = function(){
       $http.get('/articles')
         .success(function(data, status, headers, config){
           console.log('Recieved: ', data, status, headers, config);
@@ -14,7 +16,7 @@ angular.module('lightCMS.ArticleService', [])
           console.error(data, status, headers, config);
         });
       };
-    var fetchOne = function(id){
+    article.fetchOne = function(id){
       console.log('Fetching');
       $http.get('/articles/' + id)
         .success(function(data, status, headers, config){
@@ -24,11 +26,17 @@ angular.module('lightCMS.ArticleService', [])
         .error(function(data, status, headers, config){
           console.error(data, status, headers, config);
         });
-    }
-    // setup crud methods for articles
-
-    return {
-      fetchAll: fetchAll,
-      fetchOne: fetchOne
     };
+    article.create = function(article){
+      // do some validation here?
+      $http.post('/articles', data)
+        .success(function(data) {
+          console.log('Successfully posted new article;');
+        })
+        .error(function(data){
+          console.log('Error: ', data);
+        });
+    };
+
+    return article;
 });
