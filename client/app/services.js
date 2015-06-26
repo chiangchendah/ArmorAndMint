@@ -37,6 +37,6 @@ angular.module('lightCMS.ArticleService', [])
           console.log('Error: ', data);
         });
     };
-
+    // TODO: update(.put) and delete
     return article;
 });
