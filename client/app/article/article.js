@@ -8,6 +8,8 @@ angular.module('lightCMS.article', [])
       $scope.user = User;
 
       // use this to track which article view we are displaying
+      // this should almost definitely be done some other way
+      // like in/with an actual view/state router
       $scope.view = 'list';
 
       // anytime we fetch a single article we will store it here

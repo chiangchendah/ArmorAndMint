@@ -45,14 +45,16 @@ angular.module('lightCMS.ArticleService', [])
     // it should have at least a title and a body property
     article.create = function(article){
       // TODO: do some validation here?
-      $http.post('/articles', article)
-        .success(function(data) {
-          console.log('Successfully posted new article;');
-        })
-        .error(function(data){
-          console.log('Error: ', data);
-        });
+      return $http.post('/articles', article);
     };
-    // TODO: .put(a.k.a. delete) and delete
+
+    // pass in an article object with the updated properties
+    // and 'PUT' it to the server
+    article.update = function(article){
+      return $http.put(article);
+    };
+
+    // TODO: delete
+
     return article;
 });
