@@ -45,14 +45,22 @@ angular.module('lightCMS.article', [])
       $scope.editArticle = function(id) {
         Articles.fetchOne(id)
           .then(
-            function(data, status, headers, config){
+            function(data){
               $scope.currentArticle = data.data;
             },
-            function(data, status, headers, config){
-              console.error(data, status, headers, config);
+            function(data, status){
+              console.error(data, status);
             });
 
         $scope.view = 'edit';
+      };
+
+      // TODO: create update function
+
+      // create new function
+      $scope.createArticle = function(id) {
+        $scope.currentArticle = null;
+        $scope.view = 'create';
       };
 
       // use the Articles service for api requests

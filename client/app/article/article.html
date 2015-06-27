@@ -11,7 +11,7 @@
         <!-- These need to be incorporated into the db -->
         <img src="images/avatar.jpg" alt="avatar"/>
         <h6>Billy Rukh | 09 June 2015</h6>
-        <button class="edit-content" ng-show="user.isAuthed()">Edit</button>
+        <button class="edit-content" ng-show="user.isAuthed()" ng-click="editArticle(article._id)">Edit</button>
       </div>
     </div>
     <div class="load">
@@ -27,7 +27,7 @@
       <!-- These need to be incorporated into the db -->
       <img src="images/avatar.jpg" alt="avatar"/>
       <h6>Billy Rukh | 09 June 2015</h6>
-      <button class="edit-content" ng-click="editArticle(currentArticle._id)">Edit</button>
+      <button class="edit-content" ng-show="user.isAuthed()" ng-click="editArticle(currentArticle._id)">Edit</button>
     </div>
   </div>
 
@@ -37,10 +37,7 @@
     <h2><input type="text" ng-model='currentArticle.title'/></h2>
     <p><textarea ng-model="currentArticle.body"/></p>
     <div class="row">
-      <!-- These need to be incorporated into the db -->
-      <img src="images/avatar.jpg" alt="avatar"/>
-      <h6>Billy Rukh | 09 June 2015</h6>
-      <button class="save-content">Save</button>
+      <button class="save-content" ng-click="update()">Save</button>
     </div>
   </div>
 </div>

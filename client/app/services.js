@@ -11,6 +11,7 @@ angular.module('lightCMS.ArticleService', [])
     // stubbed for now - in the future this should actually do stuff
     // like you know.. check if the user is actually authed
     user.isAuthed = function() {
+      // you can change this now to see how it effects page events
       return true;
     };
 
@@ -18,9 +19,6 @@ angular.module('lightCMS.ArticleService', [])
   })
   .factory('Articles', function($http) {
     var article = {};
-
-    // How much should we try to hold on/memoize to data here?
-    // Im not sure if we should just always hit the api or what?
 
     // fetchAll()
     // returns a promise

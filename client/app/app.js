@@ -1,4 +1,9 @@
-var app = angular.module('lightCMS', ['ui.router', 'lightCMS.article', 'lightCMS.ArticleService'])
+var app = angular.module('lightCMS', [
+  'ui.router',
+  'lightCMS.user',
+  'lightCMS.article',
+  'lightCMS.ArticleService'
+  ])
   .config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /
