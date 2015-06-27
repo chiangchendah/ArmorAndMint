@@ -2,16 +2,68 @@
 // handles all requests that the Article(s) views/templates might need
 
 angular.module('lightCMS.article', [])
-    .controller('ArticleController', function($scope, Articles){
+    .controller('ArticleController', function($scope, Articles, User){
 
+      // track our user so we can determine if he has edit rights or not
+      $scope.user = User;
+
+      // use this to track which article view we are displaying
+      // this should almost definitely be done some other way
+      // like in/with an actual view/state router
+      $scope.view = 'list';
+
+      // anytime we fetch a single article we will store it here
+      // so the template can access its properties
+      $scope.currentArticle = null;
+
+      // Update our list of articles when the controller gets loaded
+      // Articles.fetchAll() returns a promise, so we can treat it as such
+      Articles.fetchAll()
+        .then(
+          function(data, status, headers, config){
+            //console.log('Recieved: ', data, status, headers, config);
+            $scope.articles = data.data;
+          },
+          function(data, status, headers, config){
+            console.error(data, status, headers, config);
+          });
       // this will need some $scope methods for interfacing from the template
 
-      // example:
-      // $scope.listArticles = function(){
-      //   $scope.articles = Articles.fetchAll()
-      // };
+      // Get the data on and view a single article
+      $scope.viewArticle = function(id){
+        Articles.fetchOne(id)
+          .then(
+            function(data, status, headers, config){
+              $scope.currentArticle = data.data;
+            },
+            function(data, status, headers, config){
+              console.error(data, status, headers, config);
+            });
 
-      // this is where we need to trigger edit events?
+        $scope.view = 'single';
+      };
+
+      // edit a single article
+      $scope.editArticle = function(id) {
+        Articles.fetchOne(id)
+          .then(
+            function(data){
+              $scope.currentArticle = data.data;
+            },
+            function(data, status){
+              console.error(data, status);
+            });
+
+        $scope.view = 'edit';
+      };
+
+      // TODO: create update function
+
+      // create new function
+      $scope.createArticle = function(id) {
+        $scope.currentArticle = null;
+        $scope.view = 'create';
+      };
 
       // use the Articles service for api requests
         // Articles.fetchAll(); -- returns all articles

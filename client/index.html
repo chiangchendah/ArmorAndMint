@@ -21,7 +21,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container" ng-controller="UserController">
 
       <!-- NAVIGATION
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -29,8 +29,8 @@
        <header>
          <h1>LightCMS</h1>
          <nav>
-           <button>+ Add Post</button>
-           <button>Sign Out</button>
+           <button ng-show="user.isAuthed()" ui-sref="create">+ Add Post</button>
+           <button ng-show="user.isAuthed()" ui-sref="signout">Sign Out</button>
          </nav>
        </header>
      </div>
@@ -63,6 +63,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 
   <!-- LOCAL SCRIPTS -->
+  <script src="app/user/user.js"></script>
   <script src="app/article/article.js"></script>
   <script src="app/services.js"></script>
   <script src="app/app.js"></script>

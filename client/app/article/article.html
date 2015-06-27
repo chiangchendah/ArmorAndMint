@@ -1,23 +1,44 @@
-<!-- Display a single article in this view -->
+<!-- BLOG TIMELINE
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="timeline-container" ng-controller="ArticleController">
-<!-- wire this up display a single post -->
-  <div class="post">
-    <h2>Faking content is fun Loram.</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<!--  list articles template -->
+  <div class='listViewContainer' ng-show="view === 'list'">
+    <div class="post" ng-repeat="article in articles">
+      <h2><a ng-click="viewArticle(article._id)">{{article.title}}</a></h2>
+      <p>{{article.body}}</p>
+      <div class="row">
+        <!-- These need to be incorporated into the db -->
+        <img src="images/avatar.jpg" alt="avatar"/>
+        <h6>Billy Rukh | 09 June 2015</h6>
+        <button class="edit-content" ng-show="user.isAuthed()" ng-click="editArticle(article._id)">Edit</button>
+      </div>
+    </div>
+    <div class="load">
+      <button>Load More</button>
+    </div>
+  </div>
+
+  <!-- view single article -->
+  <div class="post" ng-show="view === 'single'">
+    <h2>{{currentArticle.title}}</h2>
+    <p>{{currentArticle.body}}</p>
     <div class="row">
+      <!-- These need to be incorporated into the db -->
       <img src="images/avatar.jpg" alt="avatar"/>
-      <h6>Billy Rukh | 09 June 2015 ->{{test}}</h6>
+      <h6>Billy Rukh | 09 June 2015</h6>
+      <button class="edit-content" ng-show="user.isAuthed()" ng-click="editArticle(currentArticle._id)">Edit</button>
+    </div>
+  </div>
+
+  <!-- edit article view -->
+  <!-- this is where we will end up using the markdown directive -->
+  <div class="post" ng-show="view === 'edit'">
+    <h2><input type="text" ng-model='currentArticle.title'/></h2>
+    <p><textarea ng-model="currentArticle.body"/></p>
+    <div class="row">
+      <button class="save-content" ng-click="update()">Save</button>
     </div>
   </div>
 </div>
+
