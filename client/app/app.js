@@ -6,29 +6,26 @@ var app = angular.module('lightCMS', ['ui.router', 'lightCMS.article', 'lightCMS
     //
     // Now set up the states
     $stateProvider
-      // single article view state/route
+      // single article
       .state('article', {
         url: "/article",
         templateUrl: "app/article/article.html",
         controller: 'ArticleController'
       })
-      // multiple article view state
+      // multiple articles
       .state('articles', {
         url: "/articles",
         templateUrl: "app/article/article-list.html",
         controller: 'ArticleController'
       })
-      // register / sign up view
+      // register / sign up
       .state('user/register', {
         url: "/user/register",
         templateUrl: "app/user/register.html"
       })
-      // sign in view
+      // sign in
       .state('user/signin', {
         url: "/user/signin",
         templateUrl: "app/user/signin.html"
       });
   });
-
-
-
