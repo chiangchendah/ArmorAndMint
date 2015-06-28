@@ -13,7 +13,8 @@ module.exports = function(app) {
       // Call the article controller and ask for a list of articles
       Article.findAll(res);
     })
-    .post(function(req, res) {
+    .post(passport.authenticate('local'),
+      function(req, res) {
       // create a new article
       Article.create(req, res);
     });
@@ -24,11 +25,13 @@ module.exports = function(app) {
         // retrieve and return 1 article
         Article.findOne(req, res);
       })
-      .put(function(req, res){
+      .put(passport.authenticate('local'),
+        function(req, res){
         // update a single article
         Article.update(req, res);
       })
-      .delete(function(req, res){
+      .delete(passport.authenticate('local'),
+        function(req, res){
         // delete an article
         Article.remove(req, res);
       });
