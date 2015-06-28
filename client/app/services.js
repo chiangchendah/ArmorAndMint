@@ -70,7 +70,7 @@ angular.module('lightCMS.Services', [])
     // pass in an article object with the updated properties
     // and 'PUT' it to the server
     article.update = function(article){
-      return $http.put('/api/articles', article);
+      return $http.put('/api/articles/' + article.id, article);
     };
 
     // TODO: delete
