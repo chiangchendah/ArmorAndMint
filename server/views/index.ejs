@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app='lightCMS'>
+
+  <!-- Basic Page Needs
+
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <head>
+    <meta charset="utf-8">
+    <title>LightCMS</title>
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <base href="/">
+  </head>
+
+  <body>
+    <div class="container" ng-controller="UserController">
+
+      <!-- NAVIGATION
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+     <div class="nav">
+       <header>
+         <h1 style="cursor:pointer" ng-click="$window.location.reload()">LightCMS</h1>
+         <nav>
+           <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
+           <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
+           <button ng-show="!isAuthed()" ui-sref="signin">Sign In</button>
+         </nav>
+       </header>
+     </div>
+
+      <!-- MAIN HEADER CONTENT
+          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="spacer">
+        <img src="images/avatar.jpg" alt="avatar" class="main-avatar" />
+        <div class="row">
+          <div class="main">
+            <h3>Billy Rukh<img class="edit-content" ng-show="isAuthed()" ng-click="editArticle(article._id)" src="images/cog.png" /></h3>
+            <p>Software engineer from Houston, Texas.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANGULAR UI-VIEW
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div ui-view> </div>
+
+
+
+  <!-- Scripts
+   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ <script>
+  window.HERO = <%- JSON.stringify(user || null) %>;
+</script>
+  <!-- LIBRARY SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+
+  <!-- LOCAL SCRIPTS -->
+  <script src="app/user/user.js"></script>
+  <script src="app/article/article.js"></script>
+  <script src="app/services.js"></script>
+  <script src="app/app.js"></script>
+
+  <script>
+
+    /* EDIT BUTTON */
+
+    $( document ).ready(function() {
+      $(document).on('mouseenter', '.main', function () {
+        $(this).find(".edit-content").fadeIn(300);
+      }).on('mouseleave', '.main', function () {
+        $(this).find(".edit-content").fadeOut(300);
+      });
+    });
+
+    $( document ).ready(function() {
+      $(document).on('mouseenter', '.post', function () {
+        $(this).find(".edit-content").fadeIn(300);
+      }).on('mouseleave', '.post', function () {
+        $(this).find(".edit-content").fadeOut(300);
+      });
+    });
+  </script>
+  </body>
+</html>

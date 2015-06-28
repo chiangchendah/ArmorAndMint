@@ -34,7 +34,7 @@ var app = angular.module('lightCMS', [
         url: "/edit/:id",
         templateUrl: "app/article/edit.html",
         controller: 'ArticleController'
-      });
+      })
       // not currently in use
       // register / sign up
       // .state('user/register', {
@@ -42,10 +42,11 @@ var app = angular.module('lightCMS', [
       //   templateUrl: "app/user/register.html"
       // })
       // // sign in
-      // .state('user/signin', {
-      //   url: "/user/signin",
-      //   templateUrl: "app/user/signin.html"
-      // });
+      .state('signin', {
+        url: "/user/signin",
+        templateUrl: "app/user/signin.html",
+        controller: 'UserController'
+      });
       /////////
 
       // use the HTML5 History API
@@ -59,7 +60,20 @@ var app = angular.module('lightCMS', [
     // we might want to load a single article view by id?
     // or start a user off authenticated
 app.run(function($rootScope, User, $state){
-  // console.log('First run?');
+  console.log('First run?');
+
+  // see if a hero (a.k.a: authenticated user) exists
+  try {
+    if (HERO){
+      console.log('Have user: ', HERO);
+      // set our user service to this thing!
+      User.data = HERO;
+
+    }
+  }
+  catch (e) {
+    console.error(e);
+  }
 
   // we could set the user data here if the app has embedded it, yeah/ :)
   // console.log(User);

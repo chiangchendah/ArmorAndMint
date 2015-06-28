@@ -8,7 +8,12 @@ module.exports = function(app) {
     User.register(req, res, next);
   });
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+  app.post('/signin', passport.authenticate('local'), function(req, res, next) {
+    console.log('authed!');
+    User.signin(req, res, next);
+  });
+
+  app.post('/signout', function(req, res, next){
+    User.signout(req, res, next);
   });
 };

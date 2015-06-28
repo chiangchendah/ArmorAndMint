@@ -4,5 +4,17 @@
 // shared (mocked out) User service
 angular.module('lightCMS.user', [])
     .controller('UserController', function($scope, User){
-      $scope.user = User;
+
+      $scope.isAuthed = function() {
+        return User.isAuthed();
+      };
+
+      $scope.signin = function() {
+        console.log($scope.user);
+        User.signin($scope.user);
+      };
+
+      $scope.signout = function() {
+        User.signout();
+      }
 });

@@ -19,10 +19,30 @@ module.exports = {
       });
   },
   signin: function(req, res, next){
-    // find the user by username
-      // authenticate with passport
-        // send them a token?
-    // else send some json that lets the client update with an error message
+    // at this point we have already authed through passport
+    // we could call it again here or do some other auth
+    // but (right now) this only gets called
+    // if passport.authenticate has all ready succeeded
+
+    // return a json object with info about the user
+    // the client uses this as an authentication object
+    return res.json({user: {
+      username: req.user.username,
+      id: req.user._id
+      // add bio here
+    }
+   });
+  },
+  signout: function(req, res, next){
+
+    // use the passport provided
+    // logout method to end our session
+    req.logout();
+
+    // no need to redirect here?
+    // just let the client go on doing its thing
+    res.json({logout: 'Success'});
+    // res.redirect('/');
   }
 
 };

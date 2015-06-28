@@ -5,14 +5,40 @@
 //
 // This is implemented barebones, and could use much refinement.
 angular.module('lightCMS.Services', [])
-  .factory('User', function($http){
-    var user = {};
+  .factory('User', function($http, $state){
 
-    // stubbed for now - in the future this should actually do stuff
-    // like you know.. check if the user is actually authed
+    var user = {};
+    // use this for storing info
+    // about the user when we get it
+    user.data = null;
+
+    // now user.data gets set about our user at server render/client load
     user.isAuthed = function() {
-      // you can change this now to see how it effects page events
-      return true;
+      // if user.data is null then we are not an authed user
+      // its going to be checked by the server anyway
+      return user.data !== null;
+    };
+
+    // send user credentials to the server
+    // it responds with a user object if successfull
+    // error handling could be worked on
+    user.signin = function(credentials) {
+      $http.post('/signin', credentials)
+        .success(function(data){
+          user.data = data.user;
+          console.log('Got data', data.user);
+          $state.go('articles');
+        })
+        .error(function(err){
+          console.error(err);
+        });
+    };
+
+    user.signout = function() {
+      // TODO: signout at server
+      $http.post('/signout');
+      user.data = null;
+      $state.go('articles');
     };
 
     return user;
