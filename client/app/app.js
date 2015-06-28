@@ -63,6 +63,8 @@ app.run(function($rootScope, User, $state){
   console.log('First run?');
 
   // see if a hero (a.k.a: authenticated user) exists
+  // this is a variable set (or not) by the server when
+  // it renders the page
   try {
     if (HERO){
       console.log('Have user: ', HERO);
@@ -74,10 +76,6 @@ app.run(function($rootScope, User, $state){
   catch (e) {
     console.error(e);
   }
-
-  // we could set the user data here if the app has embedded it, yeah/ :)
-  // console.log(User);
-  // console.log($state);
 
 });
 
