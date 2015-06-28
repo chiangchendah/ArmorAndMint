@@ -1,0 +1,11 @@
+<div class="timeline-container" ng-controller="EditArticleController">
+  <div class="post">
+  <form ng-submit="update()">
+    <h2><input type="text" ng-model="currentArticle.title" /></h2>
+    <p><textarea ng-model="currentArticle.body" /></p>
+    <div class="row">
+      <button type="submit" class="save-content">Save</button>
+    </div>
+  </form>
+  </div>
+</div>

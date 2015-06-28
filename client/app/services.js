@@ -4,7 +4,7 @@
 // server should conform to RESTful routes
 //
 // This is implemented barebones, and could use much refinement.
-angular.module('lightCMS.ArticleService', [])
+angular.module('lightCMS.Services', [])
   .factory('User', function($http){
     var user = {};
 
@@ -28,7 +28,7 @@ angular.module('lightCMS.ArticleService', [])
     //    (angular) filters?
     //    better error handling
     article.fetchAll = function(){
-      return $http.get('/articles');
+      return $http.get('/api/articles');
     };
 
     // fetchOne()
@@ -36,8 +36,7 @@ angular.module('lightCMS.ArticleService', [])
     // returns a promise that will try to
     // provide one article or (null? err? what?)
     article.fetchOne = function(id){
-      console.log('Fetching one');
-      return $http.get('/articles/' + id);
+      return $http.get('/api/articles/' + id);
     };
 
     // create()
@@ -45,13 +44,13 @@ angular.module('lightCMS.ArticleService', [])
     // it should have at least a title and a body property
     article.create = function(article){
       // TODO: do some validation here?
-      return $http.post('/articles', article);
+      return $http.post('/api/articles', article);
     };
 
     // pass in an article object with the updated properties
     // and 'PUT' it to the server
     article.update = function(article){
-      return $http.put(article);
+      return $http.put('/api/articles', article);
     };
 
     // TODO: delete

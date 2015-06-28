@@ -64,7 +64,9 @@ module.exports = function() {
 
   // handle 404s
   app.use(function(req, res, next) {
-    res.status(404).send('Sorry cant find that!');
+    // always just send index if they have an invalid route
+    res.redirect('/');
+    //res.status(404).send('Sorry cant find that!');
   });
 
   // start the server

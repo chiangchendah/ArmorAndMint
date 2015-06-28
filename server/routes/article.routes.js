@@ -8,7 +8,7 @@ module.exports = function(app) {
   // to the beggining of the action parameters list
 
   // main articles routes
-  app.route('/articles')
+  app.route('/api/articles')
     .get(function(req, res) {
       // Call the article controller and ask for a list of articles
       Article.findAll(res);
@@ -19,7 +19,7 @@ module.exports = function(app) {
     });
 
     // specific article crud
-    app.route('/articles/:article_id')
+    app.route('/api/articles/:article_id')
       .get(function(req, res) {
         // retrieve and return 1 article
         Article.findOne(req, res);
