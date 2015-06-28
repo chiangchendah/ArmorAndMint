@@ -21,7 +21,14 @@
 
 ## Usage
 
-> Some usage instructions
+> npm install
+> bower install
+###For dev server
+> gulp
+starts a nodemon session on your server
+as well as a browser-sync session on port 3000
+- TODO: browser sync hangs on startup
+    - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
 
 ## Requirements
 
