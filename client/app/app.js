@@ -60,14 +60,12 @@ var app = angular.module('lightCMS', [
     // we might want to load a single article view by id?
     // or start a user off authenticated
 app.run(function($rootScope, User, $state){
-  console.log('First run?');
 
   // see if a hero (a.k.a: authenticated user) exists
   // this is a variable set (or not) by the server when
   // it renders the page
   try {
     if (HERO){
-      console.log('Have user: ', HERO);
       // set our user service to this thing!
       User.data = HERO;
 
