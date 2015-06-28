@@ -55,17 +55,15 @@ module.exports = function() {
       });
     });
 
-  // add an api route for handling content posts and requests
-  // this should always be authenticated for POST events
-
   // could make this its own express router?
   // -> http://expressjs.com/api.html#router
   require('../routes/user.routes.js')(app);
 
-  // article routes
+  // add an api route for handling content posts and requests
+  // this should always be authenticated for POST events
   require('../routes/article.routes.js')(app);
 
-  // handle 404s
+  // handle 404s (or dont - this case always send the index.html)
   app.use(function(req, res, next) {
     // always just send index if they have an invalid route
     res.redirect('/');
