@@ -30,9 +30,9 @@
        <header>
          <h1 style="cursor:pointer" ng-click="$window.location.reload()">LightCMS</h1>
          <nav>
-           <button ng-show="user.isAuthed()" ui-sref="create">+ Add Post</button>
-           <button ng-show="user.isAuthed()" ui-sref="signout">Sign Out</button>
-           <button ng-show="!user.isAuthed()" ui-sref="signin">Sign In</button>
+           <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
+           <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
+           <button ng-show="!isAuthed()" ui-sref="signin">Sign In</button>
          </nav>
        </header>
      </div>
@@ -43,7 +43,7 @@
         <img src="images/avatar.jpg" alt="avatar" class="main-avatar" />
         <div class="row">
           <div class="main">
-            <h3>Billy Rukh<img class="edit-content" ng-show="user.isAuthed()" ng-click="editArticle(article._id)" src="images/cog.png" /></h3>
+            <h3>Billy Rukh<img class="edit-content" ng-show="isAuthed()" ng-click="editArticle(article._id)" src="images/cog.png" /></h3>
             <p>Software engineer from Houston, Texas.</p>
           </div>
         </div>
@@ -53,11 +53,13 @@
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div ui-view> </div>
 
-  </body>
 
 
   <!-- Scripts
    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ <script>
+  window.HERO = <%- JSON.stringify(user || null) %>;
+</script>
   <!-- LIBRARY SCRIPTS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
@@ -89,5 +91,5 @@
       });
     });
   </script>
-
+  </body>
 </html>

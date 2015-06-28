@@ -4,15 +4,42 @@
 // server should conform to RESTful routes
 //
 // This is implemented barebones, and could use much refinement.
-angular.module('lightCMS.ArticleService', [])
-  .factory('User', function($http){
-    var user = {};
+angular.module('lightCMS.Services', [])
+  .factory('User', function($http, $state){
 
-    // stubbed for now - in the future this should actually do stuff
-    // like you know.. check if the user is actually authed
+    var user = {};
+    // use this for storing info
+    // about the user when we get it
+    user.data = null;
+
+    // now user.data gets set about our user at server render/client load
     user.isAuthed = function() {
-      // you can change this now to see how it effects page events
-      return true;
+      // if user.data is null then we are not an authed user
+      // its going to be checked by the server anyway
+      return user.data !== null;
+    };
+
+    // send user credentials to the server
+    // it responds with a user object if successfull
+    // error handling could be worked on
+    user.signin = function(credentials) {
+      $http.post('/signin', credentials)
+        .success(function(data){
+          user.data = data.user;
+          $state.go('articles');
+        })
+        .error(function(err){
+          console.error(err);
+        });
+    };
+
+    user.signout = function() {
+      // tell the server we want to sign out
+      // set our user data to null
+      // and reload the articles list
+      $http.post('/signout');
+      user.data = null;
+      $state.go('articles');
     };
 
     return user;
@@ -20,38 +47,30 @@ angular.module('lightCMS.ArticleService', [])
   .factory('Articles', function($http) {
     var article = {};
 
-    // fetchAll()
     // returns a promise
     // that in turn tries to return all articles
-    // todo:
-    //    allow limits in the # returned?
-    //    (angular) filters?
-    //    better error handling
     article.fetchAll = function(){
-      return $http.get('/articles');
+      return $http.get('/api/articles');
     };
 
-    // fetchOne()
     // takes an article id as a string
     // returns a promise that will try to
     // provide one article or (null? err? what?)
     article.fetchOne = function(id){
-      console.log('Fetching one');
-      return $http.get('/articles/' + id);
+      return $http.get('/api/articles/' + id);
     };
 
-    // create()
     // takes an article object
     // it should have at least a title and a body property
     article.create = function(article){
       // TODO: do some validation here?
-      return $http.post('/articles', article);
+      return $http.post('/api/articles', article);
     };
 
     // pass in an article object with the updated properties
     // and 'PUT' it to the server
     article.update = function(article){
-      return $http.put(article);
+      return $http.put('/api/articles/' + article.id, article);
     };
 
     // TODO: delete

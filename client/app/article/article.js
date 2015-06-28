@@ -2,72 +2,89 @@
 // handles all requests that the Article(s) views/templates might need
 
 angular.module('lightCMS.article', [])
-    .controller('ArticleController', function($scope, Articles, User){
+
+    // interact with a list of articles
+    .controller('ArticlesController', function($scope, Articles, User){
 
       // track our user so we can determine if he has edit rights or not
       $scope.user = User;
-
-      // use this to track which article view we are displaying
-      // this should almost definitely be done some other way
-      // like in/with an actual view/state router
-      $scope.view = 'list';
-
-      // anytime we fetch a single article we will store it here
-      // so the template can access its properties
-      $scope.currentArticle = null;
 
       // Update our list of articles when the controller gets loaded
       // Articles.fetchAll() returns a promise, so we can treat it as such
       Articles.fetchAll()
         .then(
-          function(data, status, headers, config){
-            //console.log('Recieved: ', data, status, headers, config);
+          function(data){
+            // console.log('Recieved: ', data);
             $scope.articles = data.data;
           },
           function(data, status, headers, config){
             console.error(data, status, headers, config);
           });
-      // this will need some $scope methods for interfacing from the template
+    })
+    // This may indeed be an abuse of controllers
+    // I seperated these pieces down into so many controllers
+    // in my attempt to better utilize ui-router
+    // aka: use the browsers back button from within 'a single page app'
 
-      // Get the data on and view a single article
-      $scope.viewArticle = function(id){
-        Articles.fetchOne(id)
-          .then(
-            function(data, status, headers, config){
-              $scope.currentArticle = data.data;
-            },
-            function(data, status, headers, config){
-              console.error(data, status, headers, config);
-            });
 
-        $scope.view = 'single';
+    // view one article
+    // check out the state for 'view' in app.js
+    // to see where $stateParams.id is set by ui-router
+    .controller('ArticleController', function($scope, Articles, User, $stateParams){
+      $scope.user = User;
+      $scope.currentArticle = {};
+      Articles.fetchOne($stateParams.id)
+        .then(
+          function(data){
+            $scope.currentArticle = data.data;
+          },
+          function(data, status, headers, config){
+            console.error(data, status, headers, config);
+          });
+    })
+
+    // edit an article
+    .controller('EditArticleController', function($scope, Articles, $state, $stateParams){
+      $scope.currentArticle = {};
+
+      $scope.update = function(){
+        Articles.update({
+          title: $scope.currentArticle.title,
+          body: $scope.currentArticle.body,
+          id: $scope.currentArticle._id
+        })
+        .then(function(data){
+          $state.go('articles');
+        },
+        function(err){
+          console.error('There was an error updating this article', err);
+        });
       };
 
-      // edit a single article
-      $scope.editArticle = function(id) {
-        Articles.fetchOne(id)
+      Articles.fetchOne($stateParams.id)
+        .then(
+          function(data){
+            $scope.currentArticle = data.data;
+          },
+          function(data, status, headers, config){
+            console.error(data, status, headers, config);
+          });
+    })
+
+    //  create a new article
+    .controller('CreateArticleController', function($scope, Articles, $location){
+      $scope.article = {};
+      $scope.create = function() {
+        Articles.create($scope.article)
           .then(
             function(data){
-              $scope.currentArticle = data.data;
+              // redirect since we know we are good?
+              $location.url('articles');
             },
-            function(data, status){
-              console.error(data, status);
-            });
-
-        $scope.view = 'edit';
+            function(err){
+              // alert the user to why we couldnt create the article
+              console.error(err);
+            }
+          );
       };
-
-      // TODO: create update function
-
-      // create new function
-      $scope.createArticle = function(id) {
-        $scope.currentArticle = null;
-        $scope.view = 'create';
-      };
-
-      // use the Articles service for api requests
-        // Articles.fetchAll(); -- returns all articles
-        // Articles.fetchOne('558b3aecb8506f2f03856194'); -- takes an article id, returns an article
-        // Articles.create({title: 'A day in the life.', body: 'Yo ho, a pirates life for me!'});
-          // ^ takes an object with at least title and body - creates new article
     });

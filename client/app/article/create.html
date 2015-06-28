@@ -1,0 +1,11 @@
+<div class="timeline-container" ng-controller="CreateArticleController">
+  <div class="post">
+  <form ng-submit="create()">
+    <h2><input type="text" ng-model='article.title' placeholder="Title" /></h2>
+    <p><textarea ng-model="article.body" placeholder="Write your article in markdown here...." /></p>
+    <div class="row">
+      <button type="submit" class="save-content">Save</button>
+    </div>
+  </form>
+  </div>
+</div>

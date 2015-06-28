@@ -2,29 +2,78 @@ var app = angular.module('lightCMS', [
   'ui.router',
   'lightCMS.user',
   'lightCMS.article',
-  'lightCMS.ArticleService'
+  'lightCMS.Services'
   ])
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     //
-    // For any unmatched url, redirect to /
+    // For any unmatched url
+      // redirect to "articles"
     $urlRouterProvider.otherwise("articles");
-    //
-    // Now set up the states
+
+    // set up the states
+    // these have the url to our partial/template
+    // as well as the controller to use when rendering that view
+    // see: https://github.com/angular-ui/ui-router
     $stateProvider
-      // articles
       .state('articles', {
         url: "/articles",
+        templateUrl: "app/article/list.html",
+        controller: 'ArticlesController'
+      })
+      .state('view', {
+        url: "/articles/:id",
         templateUrl: "app/article/article.html",
         controller: 'ArticleController'
       })
-      // register / sign up
-      .state('user/register', {
-        url: "/user/register",
-        templateUrl: "app/user/register.html"
+      .state('create', {
+        url: "/create",
+        templateUrl: "app/article/create.html",
+        controller: 'CreateArticleController'
       })
-      // sign in
-      .state('user/signin', {
+      .state('edit', {
+        url: "/edit/:id",
+        templateUrl: "app/article/edit.html",
+        controller: 'ArticleController'
+      })
+      // not currently in use
+      // register / sign up
+      // .state('user/register', {
+      //   url: "/user/register",
+      //   templateUrl: "app/user/register.html"
+      // })
+      // // sign in
+      .state('signin', {
         url: "/user/signin",
-        templateUrl: "app/user/signin.html"
+        templateUrl: "app/user/signin.html",
+        controller: 'UserController'
       });
+      /////////
+
+      // use the HTML5 History API
+      $locationProvider.html5Mode(true);
   });
+
+// this gets run once; after config, but before anything else
+  // inject some data onto the global object
+  // through express rendering, and then check that here
+  // and set some state based on it...
+    // we might want to load a single article view by id?
+    // or start a user off authenticated
+app.run(function($rootScope, User, $state){
+
+  // see if a hero (a.k.a: authenticated user) exists
+  // this is a variable set (or not) by the server when
+  // it renders the page
+  try {
+    if (HERO){
+      // set our user service to this thing!
+      User.data = HERO;
+
+    }
+  }
+  catch (e) {
+    console.error(e);
+  }
+
+});
+
