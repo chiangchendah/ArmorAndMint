@@ -2,7 +2,8 @@ var app = angular.module('lightCMS', [
   'ui.router',
   'lightCMS.user',
   'lightCMS.article',
-  'lightCMS.Services'
+  'lightCMS.Services',
+  'btford.markdown'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     //
@@ -35,13 +36,6 @@ var app = angular.module('lightCMS', [
         templateUrl: "app/article/edit.html",
         controller: 'ArticleController'
       })
-      // not currently in use
-      // register / sign up
-      // .state('user/register', {
-      //   url: "/user/register",
-      //   templateUrl: "app/user/register.html"
-      // })
-      // // sign in
       .state('signin', {
         url: "/user/signin",
         templateUrl: "app/user/signin.html",

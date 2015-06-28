@@ -2,7 +2,7 @@
   <!-- view single article  markdown directive will be used here-->
   <div class="post">
     <h2>{{currentArticle.title}}<img class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: currentArticle._id})" src="images/cog.png" /></h2>
-    <p>{{currentArticle.body}}</p>
+    <p btf-markdown="currentArticle.body"></p>
     <div class="row">
       <img src="images/avatar.jpg" alt="avatar"/>
       <h6>{{currentArticle.author}} | {{currentArticle.createdOn | date:'longDate'}}</h6>
