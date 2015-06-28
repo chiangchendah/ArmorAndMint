@@ -44,8 +44,23 @@ angular.module('lightCMS.article', [])
     })
 
     // edit an article
-    .controller('EditArticleController', function($scope, Articles, $stateParams){
+    .controller('EditArticleController', function($scope, Articles, $state, $stateParams){
       $scope.currentArticle = {};
+
+      $scope.update = function(){
+        Articles.update({
+          title: $scope.currentArticle.title,
+          body: $scope.currentArticle.body,
+          id: $scope.currentArticle._id
+        })
+        .then(function(data){
+          $state.go('articles');
+        },
+        function(err){
+          console.error('There was an error updating this article', err);
+        });
+      };
+
       Articles.fetchOne($stateParams.id)
         .then(
           function(data){
