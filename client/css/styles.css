@@ -79,6 +79,9 @@ h6 {
 .edit-content {
     display: none;
     margin-left: 5px;
+    cursor: pointer;
+    float: right;
+    vertical-align: top;
 }
 
 /* BLOG TIMELINE */

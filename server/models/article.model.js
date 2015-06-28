@@ -3,8 +3,9 @@ var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
   title: String,
+  body: String,
   createdOn: {type: Date, default: Date.now},
-  body: String
+  author: String
 });
 
 module.exports = mongoose.model('Article', ArticleSchema);

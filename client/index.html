@@ -38,12 +38,11 @@
       <!-- MAIN HEADER CONTENT
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div class="spacer">
-        <img src="images/avatar.jpg" alt="avatar" class="main-avatar"/>
+        <img src="images/avatar.jpg" alt="avatar" class="main-avatar" />
         <div class="row">
           <div class="main">
-            <h3>Billy Rukh</h3>
+            <h3>Billy Rukh<img class="edit-content" ng-show"user.isAuthed()" ng-click="editArticle(article._id)" src="images/cog.png" /></h3>
             <p>Software engineer from Houston, Texas.</p>
-            <button class="edit-content">Edit</button>
           </div>
         </div>
       </div>
@@ -74,17 +73,17 @@
 
     $( document ).ready(function() {
       $(document).on('mouseenter', '.main', function () {
-        $(this).find(":button").show(300);
+        $(this).find(".edit-content").fadeIn(300);
       }).on('mouseleave', '.main', function () {
-        $(this).find(":button").hide(300);
+        $(this).find(".edit-content").fadeOut(300);
       });
     });
 
     $( document ).ready(function() {
       $(document).on('mouseenter', '.post', function () {
-        $(this).find(":button").show(300);
+        $(this).find(".edit-content").fadeIn(300);
       }).on('mouseleave', '.post', function () {
-        $(this).find(":button").hide(300);
+        $(this).find(".edit-content").fadeOut(300);
       });
     });
   </script>
