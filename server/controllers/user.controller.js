@@ -39,10 +39,9 @@ module.exports = {
     // logout method to end our session
     req.logout();
 
-    // no need to redirect here?
-    // just let the client go on doing its thing
+    // send some data to the client
+    // it doesnt even use this currently
     res.json({logout: 'Success'});
-    // res.redirect('/');
   }
 
 };
