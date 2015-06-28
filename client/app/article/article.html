@@ -1,14 +1,13 @@
 <div class="timeline-container" ng-controller="ArticleController">
   <!-- view single article  markdown directive will be used here-->
   <div class="post">
-    <h2>{{currentArticle.title}}</h2>
+    <h2>{{currentArticle.title}}<img class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: currentArticle._id})" src="images/cog.png" /></h2>
     <p>{{currentArticle.body}}</p>
     <div class="row">
-      <!-- These need to be incorporated into the db -->
       <img src="images/avatar.jpg" alt="avatar"/>
-      <h6>Billy Rukh | 09 June 2015</h6>
-      <button class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: currentArticle._id})">Edit</button>
+      <h6>{{currentArticle.author}} | {{currentArticle.createdOn | date:'longDate'}}</h6>
     </div>
   </div>
 </div>
+
 

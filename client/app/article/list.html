@@ -1,14 +1,12 @@
 <!--  list articles template we may use the markdown directive here-->
 <div class="timeline-container" ng-controller="ArticlesController">
   <div class='listViewContainer'>
-    <div class="post" ng-repeat="article in articles">
-      <h2><a ui-sref="view({id: article._id})">{{article.title}}</a></h2>
-      <p>{{article.body}}</p>
+    <div class="post" ng-repeat="article in articles | orderBy: '-createdOn'">
+      <h2><a ui-sref="view({id: article._id})">{{article.title}}</a><img class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: article._id})" src="images/cog.png" /></h2>
+      <p>{{article.body | limitTo: 175}}<span ng-if="article.body.length >= 175" ui-sref="view({id: article._id})">... (show more)</span></p>
       <div class="row">
-        <!-- These need to be incorporated into the db -->
         <img src="images/avatar.jpg" alt="avatar"/>
-        <h6>Billy Rukh | 09 June 2015</h6>
-        <button class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: article._id})">Edit</button>
+        <h6>{{article.author}} | {{article.createdOn | date:'longDate'}}</h6>
       </div>
     </div>
     <div class="load">
@@ -16,3 +14,4 @@
     </div>
   </div>
 </div>
+
