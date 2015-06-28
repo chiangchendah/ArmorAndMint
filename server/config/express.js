@@ -24,8 +24,11 @@ app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({secret: 'rainbow poptart cat'}));
-//app.use(express.session({ secret: 'keyboard cat' }));
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: config.secret
+}));
 
 app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
 
