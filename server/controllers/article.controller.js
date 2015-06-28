@@ -7,6 +7,23 @@ var passport = require('passport');
 
 module.exports = {
 
+  findByTitle: function(req, res, next){
+    var strippedTitle = req.params.title.split('-').join(' ');
+    console.log(strippedTitle);
+    Article.findOne({title: strippedTitle}, function(err, result){
+      if (err) {
+        console.error(err);
+        // redirect to index page since we cant find their article?
+        // could also send warnings/404s etc
+        return res.redirect('/');
+      }
+
+      // all good, render the index page with some pre-packaged data
+      console.log('Attempting to render :', result);
+      res.render('index', {user: null});
+    });
+  },
+
   // return json with the results
   findAll: function(res){
     Article.find(function(err, results){

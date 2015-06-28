@@ -7,6 +7,13 @@ module.exports = function(app) {
   // all routes that need auth will have it by adding passport.authenticate()
   // to the beggining of the action parameters list
 
+  // pretty link article
+  app.route('/article/:title')
+    .get(function(req, res, next){
+      // search the db
+      Article.findByTitle(req, res, next);
+  });
+
   // main articles routes
   app.route('/api/articles')
     .get(function(req, res) {
