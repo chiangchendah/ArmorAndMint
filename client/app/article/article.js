@@ -22,11 +22,14 @@ angular.module('lightCMS.article', [])
           });
     })
     // This may indeed be an abuse of controllers
-    // the reason I ended up putting each 'view' in its own controller
-    // was because it made sense with the routing at the time.
-    // that said... prepare for.. wall of controllers:
+    // I seperated these pieces down into so many controllers
+    // in my attempt to better utilize ui-router
+    // aka: use the browsers back button from within 'a single page app'
 
-    // view one article $stateParams.id is set by ui-router
+
+    // view one article
+    // check out the state for 'view' in app.js
+    // to see where $stateParams.id is set by ui-router
     .controller('ArticleController', function($scope, Articles, User, $stateParams){
       $scope.user = User;
       $scope.currentArticle = {};

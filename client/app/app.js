@@ -51,3 +51,19 @@ var app = angular.module('lightCMS', [
       // use the HTML5 History API
       $locationProvider.html5Mode(true);
   });
+
+// this gets run once; after config, but before anything else
+  // inject some data onto the global object
+  // through express rendering, and then check that here
+  // and set some state based on it...
+    // we might want to load a single article view by id?
+    // or start a user off authenticated
+app.run(function($rootScope, User, $state){
+  // console.log('First run?');
+
+  // we could set the user data here if the app has embedded it, yeah/ :)
+  // console.log(User);
+  // console.log($state);
+
+});
+
