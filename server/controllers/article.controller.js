@@ -55,7 +55,18 @@ module.exports = {
 
     // attempts to create a new article using the
     // data stored in the req.body object
-    Article.create(req.body, function(err, result){
+    var article = {
+      title: req.body.title,
+      body: req.body.body,
+      // TODO: convert article author to
+      // an actual user reference in the schema
+      // and store the author that way.
+      // TODO: should username and 'display name' be two
+      // different things? for now we are just displaying the username
+      // as the author
+      author: req.user.username
+    }
+    Article.create(article, function(err, result){
       // TODO: better error handling
       if (err) throw err;
       console.log('created new article: ', result);
