@@ -26,7 +26,6 @@ angular.module('lightCMS.Services', [])
       $http.post('/signin', credentials)
         .success(function(data){
           user.data = data.user;
-          console.log('Got data', data.user);
           $state.go('articles');
         })
         .error(function(err){
@@ -35,7 +34,9 @@ angular.module('lightCMS.Services', [])
     };
 
     user.signout = function() {
-      // TODO: signout at server
+      // tell the server we want to sign out
+      // set our user data to null
+      // and reload the articles list
       $http.post('/signout');
       user.data = null;
       $state.go('articles');
@@ -46,18 +47,12 @@ angular.module('lightCMS.Services', [])
   .factory('Articles', function($http) {
     var article = {};
 
-    // fetchAll()
     // returns a promise
     // that in turn tries to return all articles
-    // todo:
-    //    allow limits in the # returned?
-    //    (angular) filters?
-    //    better error handling
     article.fetchAll = function(){
       return $http.get('/api/articles');
     };
 
-    // fetchOne()
     // takes an article id as a string
     // returns a promise that will try to
     // provide one article or (null? err? what?)
@@ -65,7 +60,6 @@ angular.module('lightCMS.Services', [])
       return $http.get('/api/articles/' + id);
     };
 
-    // create()
     // takes an article object
     // it should have at least a title and a body property
     article.create = function(article){
