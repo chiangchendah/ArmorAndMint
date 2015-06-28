@@ -19,7 +19,6 @@ module.exports = {
       }
 
       // all good, render the index page with some pre-packaged data
-      console.log('Attempting to render :', result);
       res.render('index', {user: null});
     });
   },
@@ -69,7 +68,7 @@ module.exports = {
 
     // find the article by id
     // (see findOne()above for explanation of how we get :article_id)
-    Article.findOne({_id: req.body.article_id}, function(err, article){
+    Article.findOne({_id: req.body.id}, function(err, article){
       // TODO: better error handling
       if (err) throw err;
 
