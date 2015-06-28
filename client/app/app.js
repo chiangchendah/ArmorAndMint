@@ -6,12 +6,15 @@ var app = angular.module('lightCMS', [
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     //
-    // For any unmatched url, redirect to /
+    // For any unmatched url
+      // redirect to "articles"
     $urlRouterProvider.otherwise("articles");
-    //
-    // Now set up the states
+
+    // set up the states
+    // these have the url to our partial/template
+    // as well as the controller to use when rendering that view
+    // see: https://github.com/angular-ui/ui-router
     $stateProvider
-      // articles
       .state('articles', {
         url: "/articles",
         templateUrl: "app/article/list.html",
@@ -31,17 +34,20 @@ var app = angular.module('lightCMS', [
         url: "/edit/:id",
         templateUrl: "app/article/edit.html",
         controller: 'ArticleController'
-      })
-      // register / sign up
-      .state('user/register', {
-        url: "/user/register",
-        templateUrl: "app/user/register.html"
-      })
-      // sign in
-      .state('user/signin', {
-        url: "/user/signin",
-        templateUrl: "app/user/signin.html"
       });
+      // not currently in use
+      // register / sign up
+      // .state('user/register', {
+      //   url: "/user/register",
+      //   templateUrl: "app/user/register.html"
+      // })
+      // // sign in
+      // .state('user/signin', {
+      //   url: "/user/signin",
+      //   templateUrl: "app/user/signin.html"
+      // });
+      /////////
+
       // use the HTML5 History API
       $locationProvider.html5Mode(true);
   });
