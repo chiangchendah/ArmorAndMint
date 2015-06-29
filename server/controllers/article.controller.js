@@ -122,7 +122,7 @@ module.exports = {
         console.error(err);
         res.json(err);
       }
-      res.json('You deleted: ', req.params.article_id);
+      res.json('You deleted: ' + req.params.article_id);
     });
   }
 };
