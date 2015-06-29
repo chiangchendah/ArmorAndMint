@@ -6,11 +6,9 @@ var app = angular.module('lightCMS', [
   'btford.markdown'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    //
+
     // For any unmatched url
       // redirect to "articles"
-
-
     $urlRouterProvider.otherwise("articles");
 
     // set up the states

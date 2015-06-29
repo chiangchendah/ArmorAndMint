@@ -49,8 +49,6 @@ module.exports = function() {
 
   // index - basically everything comes through this route
   app.get('/', function(req, res){
-    // this should at least be memoized
-    // so we dont have to hit the db every single time
     utils.renderIndex(req, res);
    });
 
