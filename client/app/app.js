@@ -59,10 +59,9 @@ app.run(function($rootScope, User, $state){
   // this is a variable set (or not) by the server when
   // it renders the page
   try {
-    if (HERO){
+    if (owner){
       // set our user service to this thing!
-      User.data = HERO;
-
+      User.data = owner;
     }
   }
   catch (e) {

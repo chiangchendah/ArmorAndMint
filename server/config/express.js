@@ -62,14 +62,14 @@ module.exports = function() {
         if (req.user) {
           // lets build a user object of the data we want
           // to return/render to the user
-          res.render('index', {user: {
+          res.render('index', {owner: {
                                 _id: req.user._id,
                                 name: req.user.username,
                                  //bio: user.bio
                                }
           });
         } else {
-          res.render('index', {user: null});
+          res.render('index', {owner: null});
         }
       }
     });
