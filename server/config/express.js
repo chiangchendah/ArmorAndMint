@@ -68,7 +68,7 @@ module.exports = function() {
         // its personal info about the content author/site owner
 
         var owner = null;
-        var hero = { id: 1,
+        var hero = { id: results[0]._id,
                      username: results[0].username,
                      bio: results[0].bio
                    };

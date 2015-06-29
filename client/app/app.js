@@ -68,6 +68,9 @@ app.run(function($rootScope, User, $state){
       // set our user service to this thing!
       User.data = window.owner;
     }
+    if(window.heroInfo){
+      User.hero = window.heroInfo;
+    }
   }
   catch (e) {
     console.error(e);

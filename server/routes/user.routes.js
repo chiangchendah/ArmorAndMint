@@ -20,7 +20,7 @@ module.exports = function(app) {
     User.signout(req, res, next);
   });
 
-  app.post('/user/:userId', function(req, res){
-    User.update(req, res);
+  app.post('/user/:userId', function(req, res, next){
+    User.update(req, res, next);
   });
 };

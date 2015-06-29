@@ -5,6 +5,11 @@
 //
 // This is implemented barebones, and could use much refinement.
 angular.module('lightCMS.Services', [])
+  .factory('Hero', function($http, $state){
+    var hero = {};
+
+  })
+  // this is really authentication
   .factory('User', function($http, $state){
 
     var user = {};
@@ -12,9 +17,12 @@ angular.module('lightCMS.Services', [])
     // about the user when we get it
     user.data = null;
 
+    // track hero info - this should be on its own service
+    user.hero = {};
+
     user.update = function(newUserInfo){
       // TODO: some results handling
-      return $http.post('/user/' + user.data.id, newUserInfo);
+      return $http.post('/user/' + user.hero.id, newUserInfo);
     };
 
     // now user.data gets set about our user at server render/client load

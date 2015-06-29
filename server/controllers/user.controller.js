@@ -48,16 +48,12 @@ module.exports = {
     // the route gets passed in with a user ID which express
     // kindly sticks on req.params.userId for us
 
-    console.log('Attempting to update: ', req.body);
-
     // search for a user with that id
     User.findOne({_id: req.params.userId}, function(err, result){
       if (err){
         console.error(err);
         next();
       }
-
-      console.log(result);
 
       // update the user properties
       for (var key in req.body) {
@@ -66,8 +62,13 @@ module.exports = {
         }
       }
 
-      console.log(result);
       result.save();
+
+      res.json({
+        _id: result._id,
+        username: result.username,
+        bio: result.bio
+      });
 
     });
   }

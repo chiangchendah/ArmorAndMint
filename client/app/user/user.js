@@ -4,14 +4,24 @@ angular.module('lightCMS.user', [])
     .controller('UserController', function($scope, User, $state){
 
       // used for storing/updating user profile into
-      $scope.user = {};
+      $scope.hero = User.hero;
 
       // all of these just sort of delegate to the User service
       $scope.update = function() {
-        User.update($scope.user)
+        // pass our user entered data to the server
+        User.update($scope.hero)
           .then(function(data){
+            // console.log('->', data);
+            // update our local hero info
+            $scope.hero.username = data.data.username;
+            $scope.hero.bio = data.data.bio;
+
+            // set state to a page reload
             $state.go('articles')
-          })
+
+          }, function(error){
+            console.log('->', error);
+          });
 
       };
 
