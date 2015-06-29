@@ -19,4 +19,8 @@ module.exports = function(app) {
   app.post('/signout', function(req, res, next){
     User.signout(req, res, next);
   });
+
+  app.post('/user/:userId', function(req, res, next){
+    User.update(req, res, next);
+  });
 };

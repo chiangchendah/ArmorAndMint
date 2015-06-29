@@ -52,25 +52,40 @@ module.exports = function() {
   app.get('/', function(req, res){
     // this should at least be memoized
     // so we dont have to hit the db every single time
-    User.find(function(err, user){
-      if(user.length === 0){
+    User.find(function(err, results){
+      if (err){
+        console.error(err);
+        return;
+      }
+      if(results.length === 0){
         // lets instead render index here with a different state?
         // that way once registration is complete, no reload is needed?
         res.sendFile('app/user/register.html', options);
       } else {
+
+        // owner is info for a signed in page owners view
+        // hero data is used to populate the page view
+        // its personal info about the content author/site owner
+
+        var owner = null;
+        var hero = { id: results[0]._id,
+                     username: results[0].username,
+                     bio: results[0].bio
+                   };
+
+
         // if we have an authed user
         if (req.user) {
           // lets build a user object of the data we want
           // to return/render to the user
-          res.render('index', {user: {
-                                _id: req.user._id,
-                                name: req.user.username,
-                                 //bio: user.bio
-                               }
-          });
+          owner = { _id: req.user._id,
+                    username: req.user.username };
+
         } else {
-          res.render('index', {user: null});
+          owner = null;
         }
+        console.log(hero);
+        res.render('index', {owner: owner, hero: hero});
       }
     });
    });
