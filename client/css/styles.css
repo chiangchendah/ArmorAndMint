@@ -91,6 +91,9 @@ input {
     display: table-cell;
     vertical-align: middle;
 }
+.preview>p {
+    display: inline;
+}
 
 /* BUTTONS */
 
