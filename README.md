@@ -24,12 +24,13 @@ Simply install, run, and start creating content in easy to use markdown language
 ## Usage
 
 - clone the directory using:
-- git clone https://github.org/ArmorAndMint/ArmorAndMint.git
+git clone https://github.org/ArmorAndMint/ArmorAndMint.git
 - place the bio/hero image of your choice into the client/images directory as a file named avatar.js
 - run npm install
 - run bower install
 - run gulp OR node server/server.js
 - Log in for the first time to register as the content owner
+- Start creating markdown based content!
 
 ## Known Issues
 -  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style so some markdown is different than github. strikeout for instance uses an s tag.
