@@ -1,14 +1,25 @@
-<form action="/register" method="post">
-    <h1>Register User</h1>
-    <div>
+<head>
+  <title>LightCMS Setup</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container vert-align">
+    <form action="/register" method="post">
+      <h1>LightCMS Setup</h1>
+      <br><br>
+      <div>
         <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
+        <input type="text" name="username" placeholder="Name used to log in"/>
+      </div>
+      <div>
         <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
+        <input type="password" name="password" placeholder="Your password"/>
+      </div>
+      <div>
         <input type="submit" value="Register"/>
-    </div>
-</form>
+      </div>
+    </form>
+  </div>
+</body>
