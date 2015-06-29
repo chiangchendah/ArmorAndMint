@@ -28,7 +28,7 @@
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
      <div class="nav">
        <header>
-         <h1 style="cursor:pointer" ng-click="$window.location.reload()">LightCMS</h1>
+         <h1 style="cursor:pointer" ui-sref="articles">LightCMS</h1>
          <nav>
            <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
            <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
