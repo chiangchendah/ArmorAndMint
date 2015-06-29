@@ -21,7 +21,8 @@ module.exports.renderIndex = function(req, res, article){
     // hero data is used to populate the page view with info about the content author
     var heroInfo = { id: hero._id,
                      username: hero.username,
-                     bio: hero.bio
+                     bio: hero.bio,
+                     author: hero.author
                    };
 
     // if we have an authed user
