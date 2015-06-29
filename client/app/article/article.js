@@ -61,6 +61,20 @@ angular.module('lightCMS.article', [])
         });
       };
 
+      $scope.destroy = function(){
+        Articles.delete({
+          title: $scope.currentArticle.title,
+          body: $scope.currentArticle.body,
+          id: $scope.currentArticle._id
+        })
+        .then(function(data){
+          $state.go('articles');
+        },
+        function(err){
+          console.error('There was an error deleting this article', err);
+        });
+      }
+
       Articles.fetchOne($stateParams.id)
         .then(
           function(data){

@@ -74,6 +74,9 @@ angular.module('lightCMS.Services', [])
     };
 
     // TODO: delete
+    article.delete = function(article){
+      return $http.delete('/api/articles/' + article.id, article);
+    };
 
     return article;
 });

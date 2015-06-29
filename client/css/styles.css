@@ -90,6 +90,16 @@ input {
     float: right;
     vertical-align: top;
 }
+.delete-content {
+    background-color: #EA5757;
+    border-color: #EA5757;
+    color: #FFFFFF;
+}
+.save-content {
+    background-color: #0B990D;
+    border-color: #0B990D;
+    color: #FFFFFF;
+}
 
 /* BLOG TIMELINE */
 
