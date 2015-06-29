@@ -2,6 +2,8 @@
 # Armor And Mint
 
 > Minimalist Content Management System built on the MEAN Stack
+Simply install, run, and start creating content in easy to use markdown language
+
 
 ## Team
 
@@ -21,14 +23,18 @@
 
 ## Usage
 
-> npm install
-> bower install
-###For dev server
-> gulp
-starts a nodemon session on your server
-as well as a browser-sync session on port 3000
-- TODO: browser sync hangs on startup
-    - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
+- clone the directory using:
+git clone https://github.org/ArmorAndMint/ArmorAndMint.git
+- place the bio/hero image of your choice into the client/images directory as a file named avatar.js
+- run npm install
+- run bower install
+- run gulp OR node server/server.js
+- Log in for the first time to register as the content owner
+- Start creating markdown based content!
+
+## Known Issues
+-  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style so some markdown is different than github. strikeout for instance uses an s tag.
+- This could be changed in a number of ways, it may even be configurable in the existing directive. It would be great to support all modern markdown.
 
 ## Requirements
 
@@ -38,6 +44,10 @@ as well as a browser-sync session on port 3000
 - MongoDB
 
 ## Development
+> gulp
+starts a nodemon session on your server as well as a browser-sync session on port 3000
+- TODO: browser sync hangs on startup
+    - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
 
 ### Installing Dependencies
 

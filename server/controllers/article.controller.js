@@ -7,6 +7,7 @@ var passport = require('passport');
 
 module.exports = {
 
+  // TODO: wire this up to completion.
   findByTitle: function(req, res, next){
     var strippedTitle = req.params.title.split('-').join(' ');
     console.log(strippedTitle);
@@ -18,7 +19,12 @@ module.exports = {
         return res.redirect('/');
       }
 
-      // all good, render the index page with some pre-packaged data
+      // the idea here would be to use something like:
+      // res.render('index', {user: null, article: result});
+      // and then on client side on app.run check for the article value
+      // and load up a view to display just that article.
+
+      // render the index page with some pre-packaged data
       res.render('index', {user: null});
     });
   },
@@ -43,8 +49,10 @@ module.exports = {
     // see article.routes.js for the route created to extract this param
     // see: http://expressjs.com/api.html#req.params
     Article.findOne({_id: req.params.article_id}, function(err, result){
-      // TODO: better error handling
-      if (err) throw err;
+      if (err){
+        console.error(err);
+        return res.json(err);
+      }
       return res.json(result);
     });
 
@@ -67,8 +75,10 @@ module.exports = {
       author: req.user.username
     }
     Article.create(article, function(err, result){
-      // TODO: better error handling
-      if (err) throw err;
+      if (err){
+        console.error(err);
+        res.json(err);
+      }
       console.log('created new article: ', result);
       return res.json(result);
     });
@@ -80,8 +90,10 @@ module.exports = {
     // find the article by id
     // (see findOne()above for explanation of how we get :article_id)
     Article.findOne({_id: req.body.id}, function(err, article){
-      // TODO: better error handling
-      if (err) throw err;
+      if (err){
+        console.error(err);
+        res.json(err);
+      }
 
       // assign the posted variables to this model
       // this should most likely be done differently
@@ -106,7 +118,10 @@ module.exports = {
   // (also by :article_id see findOne if more clarification is needed)
   remove: function(req, res){
     Article.remove({_id: req.params.article_id}, function(err, result){
-      if (err) throw err;
+      if (err){
+        console.error(err);
+        res.json(err);
+      }
       res.json('You deleted: ', req.params.article_id);
     });
   }
