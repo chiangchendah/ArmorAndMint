@@ -6,7 +6,7 @@ var app = angular.module('lightCMS', [
   'btford.markdown'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    //
+
     // For any unmatched url
       // redirect to "articles"
     $urlRouterProvider.otherwise("articles");
@@ -58,7 +58,7 @@ var app = angular.module('lightCMS', [
   // and set some state based on it...
     // we might want to load a single article view by id?
     // or start a user off authenticated
-app.run(function($rootScope, User, $state){
+app.run(function($rootScope, User, Articles, $location){
 
   // see if a hero (a.k.a: authenticated user) exists
   // this is a variable set (or not) by the server when
@@ -70,6 +70,10 @@ app.run(function($rootScope, User, $state){
     }
     if(window.heroInfo){
       User.hero = window.heroInfo;
+    }
+    if(window.article){
+      Articles.currentArticle = window.article;
+      $location.url('/articles/' + window.article._id)
     }
   }
   catch (e) {

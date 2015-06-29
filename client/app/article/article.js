@@ -33,14 +33,19 @@ angular.module('lightCMS.article', [])
     .controller('ArticleController', function($scope, Articles, User, $stateParams){
       $scope.user = User;
       $scope.currentArticle = {};
-      Articles.fetchOne($stateParams.id)
-        .then(
-          function(data){
-            $scope.currentArticle = data.data;
-          },
-          function(data, status, headers, config){
-            console.error(data, status, headers, config);
-          });
+      if (Articles.currentArticle){
+        // this is the droid we are looking for
+        $scope.currentArticle = Articles.currentArticle;
+      } else {
+        Articles.fetchOne($stateParams.id)
+          .then(
+            function(data){
+              $scope.currentArticle = data.data;
+            },
+            function(data, status, headers, config){
+              console.error(data, status, headers, config);
+            });
+      }
     })
 
     // edit an article

@@ -4,11 +4,12 @@
 
 var Article = require('../models/article.model');
 var passport = require('passport');
+var utils = require('../config/utils');
 
 module.exports = {
 
   // TODO: wire this up to completion.
-  findByTitle: function(req, res, next){
+  findByTitle: function(req, res) {
     var strippedTitle = req.params.title.split('-').join(' ');
     console.log(strippedTitle);
     Article.findOne({title: strippedTitle}, function(err, result){
@@ -24,8 +25,9 @@ module.exports = {
       // and then on client side on app.run check for the article value
       // and load up a view to display just that article.
 
-      // render the index page with some pre-packaged data
-      res.render('index', {user: null});
+      // call our custom built renderIndex function to render a new page set to
+      // start with our article
+      utils.renderIndex(req, res, result);
     });
   },
 

@@ -28,7 +28,7 @@ module.exports = function(app) {
   // pretty link article
   // TODO: Make this work :)
   // currently there is no way implemented to have the client render this
-  app.route('/article/:title')
+  app.route('/:title')
     .get(function(req, res, next){
       // search the db
       Article.findByTitle(req, res, next);

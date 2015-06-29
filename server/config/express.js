@@ -14,6 +14,7 @@ var morgan = require('morgan');
 
 // Internal modules
 var config = require('./config');
+var utils = require('./utils');
 
 // Modular variables
 var app = express();
@@ -33,8 +34,6 @@ app.use(session({
   secret: config.secret
 }));
 
-app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
-
 // passport config
 // this could maybe be moved to the files that need it
 var User = require('../models/user.model');
@@ -44,51 +43,13 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
 // Server setup, files, and routing are exported from here
 module.exports = function() {
-  var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
 
   // index - basically everything comes through this route
   app.get('/', function(req, res){
-    // this should at least be memoized
-    // so we dont have to hit the db every single time
-    User.find(function(err, results){
-      if (err){
-        console.error(err);
-        return;
-      }
-      if(results.length === 0){
-        // lets instead render index here with a different state?
-        // that way once registration is complete, no reload is needed?
-        res.sendFile('app/user/register.html', options);
-      } else {
-
-        // owner is info for a signed in page owners view
-        // hero data is used to populate the page view
-        // its personal info about the content author/site owner
-
-        var owner = null;
-        var hero = { id: results[0]._id,
-                     username: results[0].username,
-                     bio: results[0].bio,
-                     author: results[0].author
-                   };
-
-
-        // if we have an authed user
-        if (req.user) {
-          // lets build a user object of the data we want
-          // to return/render to the user
-          owner = { _id: req.user._id,
-                    username: req.user.username };
-
-        } else {
-          owner = null;
-        }
-        console.log(hero);
-        res.render('index', {owner: owner, hero: hero});
-      }
-    });
+    utils.renderIndex(req, res);
    });
 
   // could make this its own express router?
@@ -98,6 +59,8 @@ module.exports = function() {
   // add an api route for handling content posts and requests
   // this should always be authenticated for POST events
   require('../routes/article.routes.js')(app);
+
+  app.use(express.static(path.join(__dirname, '../../client'), {index: false})); //static files served, index:false allows custom '/' routing
 
   // handle 404s (or dont - this case always send the index.html)
   app.use(function(req, res, next) {
