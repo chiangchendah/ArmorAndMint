@@ -8,8 +8,8 @@ var config = require('./config/config'); // app specific configuration can be do
 // Modular variables
 var db = mongoose.connection; // create a db connection
 
-var dbConnectionString = 'mongodb://' + config.db.url + ':' + config.db.port + '/' + config.db.name; // create a connection string -> 'mongodb://localhost:port/test'
-dbConnectionString = 'mongodb://sean:password@ds043982.mongolab.com:43982/heroku_1db8tn65'
+//var dbConnectionString = 'mongodb://' + config.db.url + ':' + config.db.port + '/' + config.db.name; // create a connection string -> 'mongodb://localhost:port/test'
+var dbConnectionString = process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/lightCMS';
 mongoose.connect(dbConnectionString); // create the connection
 db.on('error', console.error.bind(console, 'connection error:')); // Database Error handling
 
