@@ -5,10 +5,6 @@
 //
 // This is implemented barebones, and could use much refinement.
 angular.module('lightCMS.Services', [])
-  .factory('Hero', function($http, $state){
-    var hero = {};
-
-  })
   // this is really authentication
   .factory('User', function($http, $state){
 
@@ -59,6 +55,9 @@ angular.module('lightCMS.Services', [])
   })
   .factory('Articles', function($http) {
     var article = {};
+
+    // used currently to start the app viewing an article
+    article.currentArticle = null;
 
     // returns a promise
     // that in turn tries to return all articles
