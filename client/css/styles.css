@@ -83,6 +83,17 @@ input {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+.vert-align{
+    display: table;
+    height: 75vh;
+}
+.vert-align>form{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* BUTTONS */
+
 .edit-content {
     display: none;
     margin-left: 5px;
