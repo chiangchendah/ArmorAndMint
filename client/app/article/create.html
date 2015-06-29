@@ -1,10 +1,12 @@
 <div class="timeline-container" ng-controller="CreateArticleController">
   <div class="post">
-  <form ng-submit="create()">
+  <form>
     <h2><input type="text" ng-model='article.title' placeholder="Title" /></h2>
     <p><textarea ng-model="article.body" placeholder="Write your article in markdown here...." /></p>
+    <p class="help-text">You can edit your posts with <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> or HTML</p>
     <div class="row">
-      <button type="submit" class="save-content">Save</button>
+      <button ng-click="create()" class="save-content">Publish</button>
+      <button ui-sref="articles" class="delete-content">Cancel</button>
     </div>
   </form>
   </div>
