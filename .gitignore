@@ -1,5 +1,8 @@
 ### node etc ###
 
+# Bower
+client/lib
+
 # DS Store
 .DS_Store
 
