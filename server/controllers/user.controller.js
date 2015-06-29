@@ -28,7 +28,7 @@ module.exports = {
     // the client uses this as a sort of authentication object
     return res.json({user: {
       username: req.user.username,
-      id: req.user._id
+      id: req.user._id,
       }
    });
   },
@@ -67,7 +67,8 @@ module.exports = {
       res.json({
         _id: result._id,
         username: result.username,
-        bio: result.bio
+        bio: result.bio,
+        author: result.author
       });
 
     });

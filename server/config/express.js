@@ -70,7 +70,8 @@ module.exports = function() {
         var owner = null;
         var hero = { id: results[0]._id,
                      username: results[0].username,
-                     bio: results[0].bio
+                     bio: results[0].bio,
+                     author: results[0].author
                    };
 
 
