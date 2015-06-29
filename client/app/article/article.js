@@ -60,6 +60,7 @@ angular.module('lightCMS.article', [])
         })
         .then(function(data){
           $state.go('articles');
+          toastr.success('Post successfully updated');
         },
         function(err){
           console.error('There was an error updating this article', err);
@@ -73,12 +74,14 @@ angular.module('lightCMS.article', [])
           id: $scope.currentArticle._id
         })
         .then(function(data){
+          toastr.success('Post successfully deleted.');
           $state.go('articles');
+
         },
         function(err){
-          console.error('There was an error deleting this article', err);
+          toastr.error('There was an error deleting this article', err);
         });
-      }
+      };
 
       Articles.fetchOne($stateParams.id)
         .then(
@@ -99,6 +102,7 @@ angular.module('lightCMS.article', [])
             function(data){
               // redirect since we know we are good?
               $location.url('articles');
+              toastr.success('Post successfully created');
             },
             function(err){
               // alert the user to why we couldnt create the article
