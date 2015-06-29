@@ -83,6 +83,11 @@ input {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+.help-text{
+    margin-top: -4.5rem;
+    color: #bbb;
+    font-size: 12px !important;
+}
 .vert-align{
     display: table;
     height: 75vh;
