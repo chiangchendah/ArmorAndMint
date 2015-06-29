@@ -21,14 +21,13 @@
 
 ## Usage
 
-> npm install
-> bower install
-###For dev server
-> gulp
-starts a nodemon session on your server
-as well as a browser-sync session on port 3000
-- TODO: browser sync hangs on startup
-    - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
+- clone the directory using:
+- git clone https://github.org/ArmorAndMint/ArmorAndMint.git
+- place the bio/hero image of your choice into the client/images directory as a file named avatar.js
+- run npm install
+- run bower install
+- run gulp OR node server/server.js
+- Log in for the first time to register as the content owner
 
 ## Requirements
 
@@ -38,6 +37,10 @@ as well as a browser-sync session on port 3000
 - MongoDB
 
 ## Development
+> gulp
+starts a nodemon session on your server as well as a browser-sync session on port 3000
+- TODO: browser sync hangs on startup
+    - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
 
 ### Installing Dependencies
 
