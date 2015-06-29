@@ -43,8 +43,8 @@
         <img src="images/avatar.jpg" alt="avatar" class="main-avatar" />
         <div class="row">
           <div class="main">
-            <h3>Billy Rukh<img class="edit-content" ng-show="isAuthed()" ng-click="editArticle(article._id)" src="images/cog.png" /></h3>
-            <p>Software engineer from Houston, Texas.</p>
+            <h3><%= hero.username %><img class="edit-content" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" /></h3>
+            <p><%= hero.bio %></p>
           </div>
         </div>
       </div>

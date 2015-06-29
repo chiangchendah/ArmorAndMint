@@ -25,12 +25,11 @@ module.exports = {
     // if passport.authenticate has all ready succeeded
 
     // return a json object with info about the user
-    // the client uses this as an authentication object
+    // the client uses this as a sort of authentication object
     return res.json({user: {
       username: req.user.username,
       id: req.user._id
-      // add bio here
-    }
+      }
    });
   },
   signout: function(req, res, next){
@@ -42,6 +41,35 @@ module.exports = {
     // send some data to the client
     // it doesnt even use this currently
     res.json({logout: 'Success'});
+  },
+
+  // Update owner info
+  update: function(req, res, next){
+    // the route gets passed in with a user ID which express
+    // kindly sticks on req.params.userId for us
+
+    console.log('Attempting to update: ', req.body);
+
+    // search for a user with that id
+    User.findOne({_id: req.params.userId}, function(err, result){
+      if (err){
+        console.error(err);
+        next();
+      }
+
+      console.log(result);
+
+      // update the user properties
+      for (var key in req.body) {
+        if (req.body.hasOwnProperty(key)){
+          result[key] = req.body[key];
+        }
+      }
+
+      console.log(result);
+      result.save();
+
+    });
   }
 
 };

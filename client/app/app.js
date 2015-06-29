@@ -36,6 +36,11 @@ var app = angular.module('lightCMS', [
         templateUrl: "app/article/edit.html",
         controller: 'ArticleController'
       })
+      .state('editProfile', {
+        url: "/user/editProfile",
+        templateUrl: "app/user/profile.html",
+        controller: 'UserController'
+      })
       .state('signin', {
         url: "/user/signin",
         templateUrl: "app/user/signin.html",
@@ -59,9 +64,9 @@ app.run(function($rootScope, User, $state){
   // this is a variable set (or not) by the server when
   // it renders the page
   try {
-    if (owner){
+    if (window.owner){
       // set our user service to this thing!
-      User.data = owner;
+      User.data = window.owner;
     }
   }
   catch (e) {

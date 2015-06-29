@@ -12,9 +12,9 @@ angular.module('lightCMS.Services', [])
     // about the user when we get it
     user.data = null;
 
-    user.update = function(user){
+    user.update = function(newUserInfo){
       // TODO: some results handling
-      $http.post('/user/' + user.data._id, user);
+      return $http.post('/user/' + user.data.id, newUserInfo);
     };
 
     // now user.data gets set about our user at server render/client load
