@@ -32,7 +32,7 @@ Simply install, run, and start creating content in easy to use markdown language
 - Log in for the first time to register as the content owner
 
 ## Known Issues
--  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style.
+-  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style so some markdown is different than github. strikeout for instance uses an s tag.
 - This could be changed in a number of ways, it may even be configurable in the existing directive. It would be great to support all modern markdown.
 
 ## Requirements
