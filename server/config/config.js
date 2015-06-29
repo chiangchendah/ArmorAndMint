@@ -6,7 +6,7 @@ module.exports = {
   db: {
     // This object is used to create the database connection string
     url: '127.0.0.1',
-    port: process.env.MONGO || 27017,
+    port: process.env.MONGOLAB_URI || 27017,
     name: 'lightCMS'
   },
 };
