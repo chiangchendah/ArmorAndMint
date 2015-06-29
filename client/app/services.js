@@ -12,6 +12,11 @@ angular.module('lightCMS.Services', [])
     // about the user when we get it
     user.data = null;
 
+    user.update = function(user){
+      // TODO: some results handling
+      $http.post('/user/' + user.data._id, user);
+    };
+
     // now user.data gets set about our user at server render/client load
     user.isAuthed = function() {
       // if user.data is null then we are not an authed user
