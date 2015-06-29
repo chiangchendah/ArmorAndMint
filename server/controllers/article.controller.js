@@ -72,7 +72,7 @@ module.exports = {
       // TODO: should username and 'display name' be two
       // different things? for now we are just displaying the username
       // as the author
-      author: req.user.username
+      author: req.user.author
     }
     Article.create(article, function(err, result){
       if (err){

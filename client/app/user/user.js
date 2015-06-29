@@ -11,9 +11,9 @@ angular.module('lightCMS.user', [])
         // pass our user entered data to the server
         User.update($scope.hero)
           .then(function(data){
-            // console.log('->', data);
+            //console.log('->', data);
             // update our local hero info
-            $scope.hero.username = data.data.username;
+            $scope.hero.author = data.data.author;
             $scope.hero.bio = data.data.bio;
 
             // set state to a page reload
