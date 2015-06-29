@@ -2,6 +2,8 @@
 # Armor And Mint
 
 > Minimalist Content Management System built on the MEAN Stack
+Simply install, run, and start creating content in easy to use markdown language
+
 
 ## Team
 
@@ -28,6 +30,10 @@
 - run bower install
 - run gulp OR node server/server.js
 - Log in for the first time to register as the content owner
+
+## Known Issues
+-  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style.
+- This could be changed in a number of ways, it may even be configurable in the existing directive. It would be great to support all modern markdown.
 
 ## Requirements
 
