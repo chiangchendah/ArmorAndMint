@@ -25,7 +25,7 @@ Simply install, run, and start creating content in easy to use markdown language
 
 - clone the directory using:
 git clone https://github.org/ArmorAndMint/ArmorAndMint.git
-- place the bio/hero image of your choice into the client/images directory as a file named avatar.js
+- **place the bio/hero image of your choice into the client/images directory as a file named avatar.js**
 - run npm install
 - run bower install
 - run gulp OR node server/server.js
@@ -33,8 +33,14 @@ git clone https://github.org/ArmorAndMint/ArmorAndMint.git
 - Start creating markdown based content!
 
 ## Known Issues
--  uses the showdown markdown directive (https://github.com/showdownjs/showdown) style markdown, and not github style so some markdown is different than github. strikeout for instance uses an s tag.
-- This could be changed in a number of ways, it may even be configurable in the existing directive. It would be great to support all modern markdown.
+-  uses the [showdown](https://github.com/showdownjs/showdown) style markdown via [angular-markdown-directive](https://github.com/btford/angular-markdown-directive) which does not follow github stle markdown - strikeout for instance uses an s tag.
+- This could be changed in a number of ways, it may even be configurable in the existing directive. Another option that solves both of these issues is: [angular-marked](https://github.com/Hypercubed/angular-marked). In any case it would be great to support all modern markdown.
+- Currently sharing a link to a single post is rough around the edges. There is no 'easy' sharing method. Right now you have to manually covert the article title into a hyphenated string to construct a link - like: 'server.com/my-article-title-name-goes-here'
+This will return a page view of that article. The problem is that the link itself is not currently
+displayed in this format, so there isnt anything to cut and paste from. The client will be changed
+to display a proper link title. Might also be worth creating a 'share post' button, that generates
+a link for you.
+
 
 ## Requirements
 
@@ -61,8 +67,9 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 
+Please see [CONTRIBUTING](https://github.com/ArmorAndMint/ArmorAndMint/blob/master/CONTRIBUTING.md)
+and [STYLE GUIDE](https://github.com/ArmorAndMint/ArmorAndMint/blob/master/STYLE-GUIDE.md)
+before contributing.
