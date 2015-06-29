@@ -5,8 +5,9 @@ module.exports = {
   // TODO: stop putting this on github/ use a config.example.js?
   db: {
     // This object is used to create the database connection string
-    url: '127.0.0.1',
-    port: process.env.MONGO || 27017,
-    name: 'lightCMS'
+    // THIS MAY BE EXTRANEOUS NOW
+    url: process.env.MONGOLAB_URL || '127.0.0.1',
+    port: process.env.MONGOLAB_PORT || 27017,
+    name: process.env.MONGOLAB_DB || 'lightCMS'
   },
 };
