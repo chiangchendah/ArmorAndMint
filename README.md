@@ -25,7 +25,8 @@ Simply install, run, and start creating content in easy to use markdown language
 
 - clone the directory using:
 git clone https://github.org/ArmorAndMint/ArmorAndMint.git
-- **place the bio/hero image of your choice into the client/images directory as a file named avatar.js**
+- **Replace the bio/hero image with one of your choice**
+      - place into the client/images directory with a file named avatar.js
 - run npm install
 - run bower install
 - run gulp OR node server/server.js
