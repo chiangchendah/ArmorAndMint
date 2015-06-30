@@ -5,6 +5,7 @@
 //
 var User = require('../controllers/user.controller.js');
 var passport = require('passport');
+var utils = require('../config/utils');
 
 module.exports = function(app) {
 
@@ -20,7 +21,7 @@ module.exports = function(app) {
     User.signout(req, res, next);
   });
 
-  app.post('/user/:userId', function(req, res, next){
+  app.post('/user/:userId', utils.checkAuth, function(req, res, next){
     User.update(req, res, next);
   });
 };

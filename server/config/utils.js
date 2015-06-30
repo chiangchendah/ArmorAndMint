@@ -1,7 +1,17 @@
 // renders an index page with data it might need
 var User = require('../models/user.model');
 
-//
+// this checks to see if this session is logged in
+// if its not it returns some json with an error
+// otherwise it calls next and lets the ball keep rolling
+module.exports.checkAuth = function(req, res, next){
+  if (req.user){
+    return next();
+  }
+  res.json({error: 'must be authed to view that content'});
+};
+
+
 // takes an optional article that the server will then render
 module.exports.renderIndex = function(req, res, article){
   var options = {root: __dirname + '/../../client/', dotfiles: 'deny'};
