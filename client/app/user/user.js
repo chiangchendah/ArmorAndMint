@@ -18,9 +18,10 @@ angular.module('lightCMS.user', [])
 
             // set state to a page reload
             $state.go('articles')
+            toastr.success('Bio information updated');
 
           }, function(error){
-            console.log('->', error);
+            toastr.error('There was an error updating your bio information', err);
           });
 
       };
