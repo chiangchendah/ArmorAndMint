@@ -1,15 +1,6 @@
 var Article = require('../controllers/article.controller.js');
 var passport = require('passport');
-
-// this checks to see if this session is logged in
-// if its not it returns some json with an error
-// otherwise it calls next and lets the ball keep rolling
-var checkAuth = function(req, res, next){
-  if (req.user){
-    return next();
-  }
-  res.json({error: 'must be authed to view that content'});
-};
+var utils = require('../config/utils');
 
 // article routes
 //  where /:articleID is an actual article id in this case
@@ -41,7 +32,7 @@ module.exports = function(app) {
       Article.findAll(res);
     })
     // create a new article
-    .post(checkAuth,
+    .post(utils.checkAuth,
       function(req, res) {
       Article.create(req, res);
     });
@@ -52,12 +43,12 @@ module.exports = function(app) {
         // retrieve and return 1 article
         Article.findOne(req, res);
       })
-      .put(checkAuth,
+      .put(utils.checkAuth,
         function(req, res){
         // update a single article
         Article.update(req, res);
       })
-      .delete(checkAuth,
+      .delete(utils.checkAuth,
         function(req, res){
         // delete an article
         Article.remove(req, res);
