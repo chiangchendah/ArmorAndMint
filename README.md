@@ -50,10 +50,13 @@ a link for you.
 - MongoDB
 
 ## Development
+
 > gulp
 starts a nodemon session on your server as well as a browser-sync session on port 3000
 - TODO: browser sync hangs on startup
     - you have to stop the page load, and refresh on first load but after that browser-sync and nodemon work great
+
+- client and server directories have their own README.md files which attempt to clarify the projects directory layout and usage
 
 ### Installing Dependencies
 
