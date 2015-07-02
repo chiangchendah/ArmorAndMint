@@ -93,4 +93,13 @@ angular.module('lightCMS.Services', [])
     };
 
     return article;
+})
+
+.factory('Themes', function($http) {
+  var themes = {};
+  themes.fetchAll = function () {
+    return $http.get('/api/themes');
+  }
+  return themes;
+
 });
