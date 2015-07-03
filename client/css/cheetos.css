@@ -168,5 +168,10 @@ input {
 }
 
 body {
-    background-color: #FF9966;
+    background-color: #FFCC66;
+    font-family: 'Knewave', cursive;
+}
+
+button {
+    background-color: #FF6600;
 }
