@@ -51,6 +51,7 @@ angular.module('lightCMS.article', [])
     // edit an article
     .controller('EditArticleController', function($scope, Articles, $state, $stateParams){
       $scope.currentArticle = {};
+      $scope.confirmingDelete = false;
 
       $scope.update = function(){
         Articles.update({
@@ -67,7 +68,17 @@ angular.module('lightCMS.article', [])
         });
       };
 
+      $scope.confirmDelete = function(){
+          $scope.confirmingDelete = true;
+      };
+
+      $scope.cancel = function(){
+          $scope.confirmingDelete = false;
+      };
+
       $scope.destroy = function(){
+        $scope.confirmingDelete = false;
+
         Articles.delete({
           title: $scope.currentArticle.title,
           body: $scope.currentArticle.body,
