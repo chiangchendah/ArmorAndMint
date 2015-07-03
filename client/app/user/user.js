@@ -2,6 +2,8 @@
 // the user object in various templates
 angular.module('lightCMS.user', [])
     .controller('UserController', function($scope, User, $state){
+      //error message to display on login error
+      $scope.loginStatusMessage = "";
 
       // used for storing/updating user profile into
       $scope.hero = User.hero;
@@ -31,7 +33,14 @@ angular.module('lightCMS.user', [])
       };
 
       $scope.signin = function() {
-        User.signin($scope.user);
+        $scope.loginStatusMessage = "Logging in...";
+        User.signin($scope.user, function(err){
+          if(err) {
+            $scope.loginStatusMessage = err;
+          } else {
+            $scope.loginStatusMessage = "";
+          }
+        });
       };
 
       $scope.signout = function() {

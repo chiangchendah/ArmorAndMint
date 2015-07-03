@@ -11,10 +11,10 @@ module.exports = {
       function(err, user) {
         if (err) {
           console.error('Cannot create user: ', req.body.username, ' ', err);
-          return res.json({ user : user, error: err});
+          return res.json({error: err});
         }
         passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
+          res.json({user:user});
         });
       });
   },
