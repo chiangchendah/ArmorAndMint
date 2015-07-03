@@ -18,7 +18,7 @@ angular.module('lightCMS.Services', [])
 
     user.update = function(newUserInfo){
       // TODO: some results handling
-      return $http.post('/user/' + user.hero.id, newUserInfo);
+      return $http.post('/user', newUserInfo);
     };
 
     //change the users password

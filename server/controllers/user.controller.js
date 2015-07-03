@@ -49,7 +49,7 @@ module.exports = {
     // kindly sticks on req.params.userId for us
 
     // search for a user with that id
-    User.findOne({_id: req.params.userId}, function(err, result){
+    User.findOne({_id: req.user._id}, function(err, result){
       if (err){
         console.error(err);
         next();
