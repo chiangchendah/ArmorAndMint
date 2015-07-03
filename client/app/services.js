@@ -31,7 +31,7 @@ angular.module('lightCMS.Services', [])
     // send user credentials to the server
     // it responds with a user object if successfull
     // error handling could be worked on
-    user.signin = function(credentials) {
+    user.signin = function(credentials, callback) {
       $http.post('/signin', credentials)
         .success(function(data){
           user.data = data.user;
@@ -39,7 +39,7 @@ angular.module('lightCMS.Services', [])
           toastr.success('Successfully signed in');
         })
         .error(function(err){
-          console.error(err);
+          callback(err);
         });
     };
 
