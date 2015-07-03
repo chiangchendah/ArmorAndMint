@@ -25,7 +25,7 @@ module.exports = function(app) {
     User.changePassword(req, res, next);
   });
 
-  app.post('/user/:userId', utils.checkAuth, function(req, res, next){
+  app.post('/user', utils.checkAuth, function(req, res, next){
     User.update(req, res, next);
   });
 };
