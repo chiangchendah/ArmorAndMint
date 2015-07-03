@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link id="dynamiccss" rel="stylesheet" href="css/themes/styles.css">
     <link rel="stylesheet" href="lib/toastr/toastr.min.css"/>
 
     <base href="/">
@@ -79,7 +79,7 @@
   <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
   <script src="lib/showdown/compressed/Showdown.min.js"></script>
   <script src="lib/angular-markdown-directive/markdown.js"></script>
-    <script src="lib/toastr/toastr.min.js"></script>
+  <script src="lib/toastr/toastr.min.js"></script>
 
   <script src="app/user/user.js"></script>
   <script src="app/article/article.js"></script>
@@ -105,6 +105,7 @@
         $(this).find(".edit-content").fadeOut(300);
       });
     });
+
   </script>
   </body>
 </html>

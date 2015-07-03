@@ -1,1 +1,3 @@
-{ "default": "filepathtostyles.csshere" , "cheetos": "filepathtocheetos.csshere"}
+[ {"title":"default", "path": "/client/app/css/themes/styles.css"}, 
+  {"title":"cheetos", "path":"/client/app/css/themes/cheetos.css"}
+]
