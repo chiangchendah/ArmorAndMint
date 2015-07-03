@@ -72,6 +72,21 @@ module.exports = {
       });
 
     });
+  },
+
+  changePassword: function(req, res, next) {
+    User.findOne({_id: req.user._id}, function(err, user){
+      if (err) return next();
+
+      user.setPassword(req.body.password, function(err){
+        if(err){
+          res.status(500).end();
+        } else {
+          user.save();
+          res.status(200).end();
+        }
+      });
+    });
   }
 
 };

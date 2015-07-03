@@ -1,5 +1,6 @@
 <!-- template for displaying and editing user info -->
 <div ng-controller="UserController">
+  <h4>General Settings</h4>
   <form>
     <input type="text" ng-model="hero.author" /></h2>
     <textarea ng-model="hero.bio" />
@@ -11,4 +12,24 @@
       <button ng-click="cancel()" class="cancel-edit">Cancel</button>
     </div>
   </form>
+
+  <div>
+    <h4>Password</h4>
+    <form>
+      <div>
+        <label>New Password:</label>
+        <input type="password" placeholder="New password" ng-model="newPassword"/>
+      </div>
+      <div>
+        <label>Confirm New Password:</label>
+        <input type="password" placeholder="Confirm new password" ng-model="newPasswordConfirmation"/>
+        <span ng-show="newPasswordConfirmation && newPassword !== newPasswordConfirmation">passwords don't match<span>
+      </div>
+      <div>
+        <button ng-show="newPassword && newPassword === newPasswordConfirmation"
+             ng-click="changePassword()">Change Password</button> <span></span>
+      </div>
+    </form>
+  </div>
+  
 </div>

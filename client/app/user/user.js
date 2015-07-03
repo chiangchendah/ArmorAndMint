@@ -5,6 +5,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
     .controller('UserController', function($scope, User, $state, Themes){
       //error message to display on login error
       $scope.loginStatusMessage = "";
+
       // used for storing/updating user profile into
       $scope.hero = User.hero;
 
@@ -50,6 +51,17 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
       $scope.signout = function() {
         User.signout();
+      };
+
+      $scope.changePassword = function() {
+        User.changePassword($scope.newPassword, function(err){
+          if(err) {
+            toastr.error("There was an error changing password", err);
+          } else {
+            toastr.success("Password changed");
+            $scope.newPassword = $scope.newPasswordConfirmation = "";
+          }
+        });
       };
 
       $scope.getThemes = function () {
