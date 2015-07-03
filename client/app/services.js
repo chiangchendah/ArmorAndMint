@@ -21,6 +21,17 @@ angular.module('lightCMS.Services', [])
       return $http.post('/user/' + user.hero.id, newUserInfo);
     };
 
+    //change the users password
+    user.changePassword = function(newPassword, callback) {
+      $http.post('/user/password', {password: newPassword})
+        .success(function(){
+          callback();
+        })
+        .error(function(){
+          callback("Error");
+        });
+    };
+
     // now user.data gets set about our user at server render/client load
     user.isAuthed = function() {
       // if user.data is null then we are not an authed user

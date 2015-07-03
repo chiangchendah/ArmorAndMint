@@ -21,6 +21,10 @@ module.exports = function(app) {
     User.signout(req, res, next);
   });
 
+  app.post('/user/password', utils.checkAuth, function(req, res, next){
+    User.changePassword(req, res, next);
+  });
+
   app.post('/user/:userId', utils.checkAuth, function(req, res, next){
     User.update(req, res, next);
   });
