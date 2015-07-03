@@ -1,15 +1,10 @@
 // user controller for interacting with
 // the user object in various templates
-<<<<<<< HEAD
-angular.module('lightCMS.user', [])
-    .controller('UserController', function($scope, User, $state){
-      //error message to display on login error
-      $scope.loginStatusMessage = "";
-=======
+
 angular.module('lightCMS.user', ['lightCMS.Services'])
     .controller('UserController', function($scope, User, $state, Themes){
->>>>>>> added cheetos file, theming dropdown, themes factory
-
+      //error message to display on login error
+      $scope.loginStatusMessage = "";
       // used for storing/updating user profile into
       $scope.hero = User.hero;
 
@@ -59,7 +54,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
       $scope.getThemes = function () {
         Themes.fetchAll().then(function(response) {
-          console.log(response);
+          console.log(response.data);
           $scope.themes = response.data;
         })
       };
