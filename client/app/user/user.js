@@ -1,12 +1,14 @@
 // user controller for interacting with
 // the user object in various templates
-angular.module('lightCMS.user', [])
-    .controller('UserController', function($scope, User, $state){
+
+angular.module('lightCMS.user', ['lightCMS.Services'])
+    .controller('UserController', function($scope, User, $state, Themes){
       //error message to display on login error
       $scope.loginStatusMessage = "";
-
       // used for storing/updating user profile into
       $scope.hero = User.hero;
+
+      $scope.themes = [];
 
       // all of these just sort of delegate to the User service
       $scope.update = function() {
@@ -48,5 +50,15 @@ angular.module('lightCMS.user', [])
 
       $scope.signout = function() {
         User.signout();
-      }
+      };
+
+      $scope.getThemes = function () {
+        Themes.fetchAll().then(function(response) {
+          console.log(response.data);
+          $scope.themes = response.data;
+        })
+      };
+
+      $scope.getThemes();
+
 });
