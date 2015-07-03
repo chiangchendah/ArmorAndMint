@@ -59,6 +59,7 @@ module.exports = {
       for (var key in req.body) {
         if (req.body.hasOwnProperty(key)){
           result[key] = req.body[key];
+          console.log(key);
         }
       }
 
@@ -68,7 +69,8 @@ module.exports = {
         _id: result._id,
         username: result.username,
         bio: result.bio,
-        author: result.author
+        author: result.author,
+        theme: result.theme
       });
 
     });

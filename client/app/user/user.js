@@ -18,6 +18,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
           .then(function(data){
             //console.log('->', data);
             // update our local hero info
+
             $scope.hero.author = data.data.author;
             $scope.hero.bio = data.data.bio;
 
@@ -72,5 +73,28 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       };
 
       $scope.getThemes();
+
+    //   $scope.currentTheme = function(value) {
+    //  // if value is set, it has the new current theme
+    //    if( value ) {
+    //         $scope._currentTheme = value.title;
+    //         console.log($scope._currentTheme);
+    //    }
+    //  // always return a value in case ng-model is asking us for it (the getter where value is undefined)
+    //  return $scope._currentTheme;
+    // };
+
+    $scope.previewTheme = function () {
+      console.log('theme changed to:' + $scope.currentTheme.title);
+
+      function changeCSS(cssFile) {
+        console.log(document.getElementById('dynamiccss'));
+        document.getElementById('dynamiccss').setAttribute('href', $scope.currentTheme.path);
+        console.log(document.getElementById('dynamiccss'));
+        console.log($scope.hero);
+
+      }
+      changeCSS();
+    };
 
 });
