@@ -25,7 +25,10 @@ angular.module('lightCMS.user', [])
           }, function(error){
             toastr.error('There was an error updating your bio information', err);
           });
+      };
 
+      $scope.cancel = function(){
+          $state.go("articles");
       };
 
       $scope.isAuthed = function() {
