@@ -45,6 +45,7 @@
            <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
            <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
            <button ng-show="!isAuthed()" ui-sref="signin">Sign In</button>
+           <img class="edit-settings" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" />
          </nav>
        </header>
      </div>
@@ -52,10 +53,10 @@
       <!-- MAIN HEADER CONTENT
           –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <div class="spacer">
-        <img src="images/avatar.jpg" alt="avatar" class="main-avatar" />
+        <gravatar email="hero.email" />
         <div class="row">
           <div class="main">
-            <h3>{{hero.author}}<img class="edit-content" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" /></h3>
+            <h3>{{hero.author}}</h3>
             <p>{{hero.bio}}</p>
           </div>
         </div>
@@ -86,6 +87,9 @@
   <script src="lib/showdown/compressed/Showdown.min.js"></script>
   <script src="lib/angular-markdown-directive/markdown.js"></script>
   <script src="lib/toastr/toastr.min.js"></script>
+
+  <script src="vendor/gravatar/gravatar.js"></script>
+  <script src="vendor/gravatar/md5.js"></script>
 
   <script src="app/user/user.js"></script>
   <script src="app/article/article.js"></script>

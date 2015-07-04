@@ -2,7 +2,10 @@
 <div ng-controller="UserController">
   <h4>General Settings</h4>
   <form>
-    <input type="text" ng-model="hero.author" /></h2>
+    <label>Name</label>
+    <input type="text" ng-model="hero.author" />
+    <label>Email Address (for gravatar)</label>
+    <input type="text" ng-model="hero.email" />
     <textarea ng-model="hero.bio" />
       <select id="selectedTheme" ng-options="theme.title for theme in themes" ng-model="currentTheme" ng-change="previewTheme()"> </select>
     <div class="row">
@@ -29,7 +32,7 @@
       </div>
     </form>
   </div>
-  
+
 </div>
 
 <!-- ng-change="changeTheme()" -->
