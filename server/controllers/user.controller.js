@@ -71,7 +71,7 @@ module.exports = {
         bio: result.bio,
         author: result.author,
         theme: result.theme,
-        email: result.email
+        email: result.email,
         disqus_shortname: result.disqus_shortname
       });
 
