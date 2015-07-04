@@ -92,4 +92,13 @@ app.config(['markedProvider', function(markedProvider) {
       return hljs.highlightAuto(code).value;
     }
   });
+
+  //TODO - use this to render links to other posts if href is a relative path
+  /*
+  markedProvider.setRenderer({
+    link: function(href, title, text) {
+      return "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    }
+  });
+  */
 }]);
