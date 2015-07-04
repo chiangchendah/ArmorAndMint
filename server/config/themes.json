@@ -1,5 +1,6 @@
 [ 
   {"title":"default", "path": "css/themes/styles.css"}, 
   {"title":"cheetos", "path":"css/themes/cheetos.css"},
-  {"title":"8bit", "path":"css/themes/8bit.css"}
+  {"title":"8bit", "path":"css/themes/8bit.css"},
+  {"title":"nicholascage", "path":"css/themes/nicholascage.css"}
 ]

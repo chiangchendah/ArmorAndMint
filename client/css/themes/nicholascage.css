@@ -131,7 +131,7 @@ input {
 }
 
 .post {
-    border-bottom:1px solid lightgray;
+    border-bottom:1px solid white;
     margin-bottom: 15px;
 }
 
@@ -168,11 +168,20 @@ input {
 }
 
 body {
-    background-image: url('https://media4.giphy.com/media/uinI66mFK73Ne/200.gif');
+    background-image: url('http://media.giphy.com/media/12A3hKKsewxtGE/giphy.gif');
     background-size: 100% 100%;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Pacifico', cursive;
+}
+
+.main, .nav, .ng-scope, .listViewContainer {
+  color:white;
+}
+
+form {
+  color: black;
 }
 
 button {
-    background-color: #FF6600;
+    background-color: #3399FF;
+    color: white;
 }
