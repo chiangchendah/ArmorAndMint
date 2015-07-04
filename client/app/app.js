@@ -3,7 +3,7 @@ var app = angular.module('lightCMS', [
   'lightCMS.user',
   'lightCMS.article',
   'lightCMS.Services',
-  'btford.markdown',
+  'hc.marked',
   'ui-gravatar'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -82,3 +82,23 @@ app.run(function($rootScope, User, Articles, $location){
   }
 
 });
+
+//enable git flavoured markdown (gfm)
+app.config(['markedProvider', function(markedProvider) {
+  markedProvider.setOptions({
+    gfm: true,
+    tables: true,
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value;
+    }
+  });
+
+  //TODO - use this to render links to other posts if href is a relative path
+  /*
+  markedProvider.setRenderer({
+    link: function(href, title, text) {
+      return "<a href='" + href + "' title='" + title + "' target='_blank'>" + text + "</a>";
+    }
+  });
+  */
+}]);
