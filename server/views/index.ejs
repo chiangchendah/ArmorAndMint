@@ -46,8 +46,9 @@
          <nav>
            <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
            <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
+           <button ng-show="isAuthed()" ui-sref="editProfile">Settings</button>
            <button ng-show="!isAuthed()" ui-sref="signin">Sign In</button>
-           <img class="edit-settings" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" />
+           <!-- <img class="edit-settings" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" /> -->
          </nav>
        </header>
      </div>
