@@ -8,7 +8,7 @@ angular.module('ui-gravatar', [])
           var hash = ""
           if ((email !== null) && (email !== undefined) && (email !== '')){
             var hash = md5.createHash(email.toLowerCase());
-            var src = 'https://secure.gravatar.com/avatar/' + hash + '?s=200&d=mm'
+            var src = 'https://secure.gravatar.com/avatar/' + hash + '?s=200'
             tag = '<img src=' + src + ' class="main-avatar"/>'
             element.html(tag);
           }
