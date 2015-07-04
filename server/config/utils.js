@@ -35,6 +35,7 @@ module.exports.renderIndex = function(req, res, article){
                      author: hero.author,
                      theme: hero.theme,
                      email: hero.email
+                     disqus_shortname: hero.disqus_shortname
                    };
 
     // if we have an authed user
