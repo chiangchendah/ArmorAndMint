@@ -168,10 +168,9 @@ input {
 }
 
 body {
-    background-image: url('http://media.giphy.com/media/B1MeVvs2vn0mQ/giphy.gif');
-    font-family: 'Knewave', cursive;
+    background-image: url('https://media4.giphy.com/media/uinI66mFK73Ne/200.gif');
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    font-family: 'Press Start 2P', cursive;
 }
 
 button {

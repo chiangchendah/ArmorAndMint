@@ -4,9 +4,7 @@
   <form>
     <input type="text" ng-model="hero.author" /></h2>
     <textarea ng-model="hero.bio" />
-      <select class="u-full-width" id="exampleRecipientInput">
-        <option ng-repeat="theme in themes"> {{ theme.title }} </option>
-      </select>
+      <select id="selectedTheme" ng-options="theme.title for theme in themes" ng-model="currentTheme" ng-change="previewTheme()"> </select>
     <div class="row">
       <button ng-click="update()" class="save-content">Save</button>
       <button ng-click="cancel()" class="cancel-edit">Cancel</button>
@@ -33,3 +31,5 @@
   </div>
   
 </div>
+
+<!-- ng-change="changeTheme()" -->

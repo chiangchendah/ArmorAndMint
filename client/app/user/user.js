@@ -73,4 +73,15 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
       $scope.getThemes();
 
+      $scope.previewTheme = function () {
+        console.log('theme changed to:' + $scope.currentTheme.title);
+
+        function changeCSS(cssFile) {
+          console.log(document.getElementById('dynamiccss'));
+          document.getElementById('dynamiccss').setAttribute('href', $scope.currentTheme.path);
+          console.log(document.getElementById('dynamiccss'));
+        }
+        changeCSS();
+      };
+
 });

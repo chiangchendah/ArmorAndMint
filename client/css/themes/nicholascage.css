@@ -131,7 +131,7 @@ input {
 }
 
 .post {
-    border-bottom:1px solid lightgray;
+    border-bottom:1px solid white;
     margin-bottom: 15px;
 }
 
@@ -168,12 +168,21 @@ input {
 }
 
 body {
-    background-image: url('http://media.giphy.com/media/B1MeVvs2vn0mQ/giphy.gif');
-    font-family: 'Knewave', cursive;
+    background-image: url('http://media.giphy.com/media/12A3hKKsewxtGE/giphy.gif');
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    font-family: 'Pacifico', cursive;
+}
+
+.main, .nav, .ng-scope, .listViewContainer {
+  color:white;
+}
+
+form {
+  color: black;
 }
 
 button {
-    background-color: #FF6600;
+    background-color: #3399FF;
+    color: white;
 }
