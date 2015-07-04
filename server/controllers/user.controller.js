@@ -70,8 +70,9 @@ module.exports = {
         username: result.username,
         bio: result.bio,
         author: result.author,
-        theme: result.theme,
+        theme: result.theme.title,
         email: result.email,
+        email: result.email
         disqus_shortname: result.disqus_shortname
       });
 
