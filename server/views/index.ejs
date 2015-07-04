@@ -75,6 +75,7 @@
   window.owner = <%- JSON.stringify(owner) %>;
   window.heroInfo = <%- JSON.stringify(hero) %>;
   window.article = <%- JSON.stringify(article) %>;
+  document.getElementById("dynamiccss").setAttribute('href', heroInfo.path);
 </script>
 
   <!-- LIBRARY SCRIPTS -->

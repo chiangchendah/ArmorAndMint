@@ -15,6 +15,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       $scope.update = function() {
         // pass our user entered data to the server
         $scope.hero.theme = $scope.selectedTheme.title;
+        $scope.hero.path = $scope.selectedTheme.path;
         console.log(JSON.stringify($scope.hero));
         User.update($scope.hero)
           .then(function(data){
@@ -36,7 +37,11 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       };
 
       $scope.cancel = function(){
-          $state.go("articles");
+         function changeCSS(cssFile) {
+          document.getElementById('dynamiccss').setAttribute('href', $scope.hero.path);
+        }
+        changeCSS();
+        $state.go("articles");
       };
 
       $scope.isAuthed = function() {
