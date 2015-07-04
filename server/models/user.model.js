@@ -7,6 +7,7 @@ var UserSchema = new Schema({
   author: {type: String, default: 'Your Name'},
   theme: {type:String, default: 'default'},
   email: String
+  disqus_shortname: {type: String, default: undefined}
 });
 
 // this populates our user object with everything we need for now
