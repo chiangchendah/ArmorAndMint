@@ -78,7 +78,6 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
       $scope.getThemes = function () {
         Themes.fetchAll().then(function(response) {
-          console.log(response.data);
           $scope.themes = response.data;
         })
       };
