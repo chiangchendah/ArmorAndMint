@@ -168,10 +168,15 @@ input {
 }
 
 body {
+    min-height: 1000px;
     background-image: url('http://media.giphy.com/media/B1MeVvs2vn0mQ/giphy.gif');
-    font-family: 'Knewave', cursive;
+    font-family: 'Montserrat', sans-serif;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+}
+
+.spacer, h1, .listViewContainer {
+  color: white;
 }
 
 button {

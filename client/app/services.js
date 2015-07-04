@@ -46,7 +46,6 @@ angular.module('lightCMS.Services', [])
       $http.post('/signin', credentials)
         .success(function(data){
           user.data = data.user;
-          // console.log(user.data.theme);
           $state.go('articles');
           toastr.success('Successfully signed in');
         })

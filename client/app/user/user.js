@@ -9,6 +9,8 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       // used for storing/updating user profile into
       $scope.hero = User.hero;
 
+      $scope.selectedTheme = User.hero.theme;
+
       $scope.themes = [];
 
       // all of these just sort of delegate to the User service
@@ -16,7 +18,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
         // pass our user entered data to the server
         $scope.hero.theme = $scope.selectedTheme.title;
         $scope.hero.path = $scope.selectedTheme.path;
-        console.log(JSON.stringify($scope.hero));
+    
         User.update($scope.hero)
           .then(function(data){
             //console.log('->', data);
@@ -84,12 +86,9 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       $scope.getThemes();
 
       $scope.previewTheme = function () {
-        console.log('theme changed to:' + $scope.selectedTheme.title);
 
         function changeCSS(cssFile) {
-          console.log(document.getElementById('dynamiccss'));
           document.getElementById('dynamiccss').setAttribute('href', $scope.selectedTheme.path);
-          console.log(document.getElementById('dynamiccss'));
         }
         changeCSS();
       };
