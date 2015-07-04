@@ -14,9 +14,6 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       // all of these just sort of delegate to the User service
       $scope.update = function() {
         // pass our user entered data to the server
-        // console.log('scope.update being called');
-        // var stringified = JSON.stringify($scope.hero);
-        // console.log('passing in: ' + stringified);
         User.update($scope.hero)
           .then(function(data){
             //console.log('->', data);
@@ -76,25 +73,15 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
       $scope.getThemes();
 
-    //   $scope.currentTheme = function(value) {
-    //  // if value is set, it has the new current theme
-    //    if( value ) {
-    //         $scope._currentTheme = value.title;
-    //         console.log($scope._currentTheme);
-    //    }
-    //  // always return a value in case ng-model is asking us for it (the getter where value is undefined)
-    //  return $scope._currentTheme;
-    // };
+      $scope.previewTheme = function () {
+        console.log('theme changed to:' + $scope.currentTheme.title);
 
-    $scope.previewTheme = function () {
-      console.log('theme changed to:' + $scope.currentTheme.title);
-
-      function changeCSS(cssFile) {
-        console.log(document.getElementById('dynamiccss'));
-        document.getElementById('dynamiccss').setAttribute('href', $scope.currentTheme.path);
-        console.log(document.getElementById('dynamiccss'));
-      }
-      changeCSS();
-    };
+        function changeCSS(cssFile) {
+          console.log(document.getElementById('dynamiccss'));
+          document.getElementById('dynamiccss').setAttribute('href', $scope.currentTheme.path);
+          console.log(document.getElementById('dynamiccss'));
+        }
+        changeCSS();
+      };
 
 });
