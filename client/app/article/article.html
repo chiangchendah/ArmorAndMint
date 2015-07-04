@@ -4,10 +4,8 @@
     <h2>{{currentArticle.title}}<img class="edit-content" ng-show="user.isAuthed()" ui-sref="edit({id: currentArticle._id})" src="images/cog.png" /></h2>
     <p btf-markdown="currentArticle.body"></p>
     <div class="row">
-      <img src="images/avatar.jpg" alt="avatar"/>
+      <gravatar email="hero.email"/>
       <h6>{{currentArticle.author}} | {{currentArticle.createdOn | date:'longDate'}}</h6>
     </div>
   </div>
 </div>
-
-

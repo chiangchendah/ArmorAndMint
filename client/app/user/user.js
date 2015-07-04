@@ -18,8 +18,9 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
           .then(function(data){
             //console.log('->', data);
             // update our local hero info
-            $scope.hero.author = data.data.author;
-            $scope.hero.bio = data.data.bio;
+            //$scope.hero.author = data.data.author;
+            //$scope.hero.bio = data.data.bio;
+            //$scope.hero.email = data.data.email;
 
             // set state to a page reload
             $state.go('articles')

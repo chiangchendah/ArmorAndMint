@@ -33,7 +33,8 @@ module.exports.renderIndex = function(req, res, article){
                      username: hero.username,
                      bio: hero.bio,
                      author: hero.author,
-                     theme: hero.theme
+                     theme: hero.theme,
+                     email: hero.email
                    };
 
     // if we have an authed user

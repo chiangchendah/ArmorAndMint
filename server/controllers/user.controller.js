@@ -70,7 +70,8 @@ module.exports = {
         username: result.username,
         bio: result.bio,
         author: result.author,
-        theme: result.theme
+        theme: result.theme,
+        email: result.email
       });
 
     });

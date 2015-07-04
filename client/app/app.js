@@ -3,7 +3,8 @@ var app = angular.module('lightCMS', [
   'lightCMS.user',
   'lightCMS.article',
   'lightCMS.Services',
-  'btford.markdown'
+  'btford.markdown',
+  'ui-gravatar'
   ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -81,4 +82,3 @@ app.run(function($rootScope, User, Articles, $location){
   }
 
 });
-

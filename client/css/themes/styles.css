@@ -102,6 +102,13 @@ input {
 
 /* BUTTONS */
 
+.edit-settings {
+    margin-left: 5px;
+    cursor: pointer;
+    /*float: right;*/
+    vertical-align: middle;
+}
+
 .edit-content {
     display: none;
     margin-left: 5px;
