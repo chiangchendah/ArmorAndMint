@@ -49,7 +49,7 @@ input {
 
 .main {
     text-align: center;
-
+    color: black;
 }
 .main button {
 
@@ -124,14 +124,14 @@ input {
 
 
 .timeline-container {
-    border-top:1px solid lightgray;
+    border-top:1px solid black;
     margin-top: 10px;
     text-align: left;
     padding-top: 10px;
 }
 
 .post {
-    border-bottom:1px solid lightgray;
+    border-bottom:1px solid black;
     margin-bottom: 15px;
 }
 
@@ -167,7 +167,12 @@ input {
     margin-bottom: 10px;
 }
 
+.row {
+  color: black;
+}
+
 body {
+    min-height: 1000px;
     background-image: url('https://media4.giphy.com/media/uinI66mFK73Ne/200.gif');
     background-size: 100% 100%;
     font-family: 'Press Start 2P', cursive;

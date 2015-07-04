@@ -34,6 +34,7 @@ module.exports.renderIndex = function(req, res, article){
                      bio: hero.bio,
                      author: hero.author,
                      theme: hero.theme,
+                     path: hero.path,
                      email: hero.email,
                      disqus_shortname: hero.disqus_shortname
                    };

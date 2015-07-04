@@ -169,13 +169,20 @@ input {
 
 body {
     min-height: 1000px;
-    background-image: url('http://media.giphy.com/media/12A3hKKsewxtGE/giphy.gif');
+    /*background-image: url('http://media.giphy.com/media/12A3hKKsewxtGE/giphy.gif');*/
+    background: -moz-linear-gradient(270deg, rgba(28,187,255,1) 0%, rgba(0,128,128,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(28,187,255,1)), color-stop(100%, rgba(0,128,128,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(270deg, rgba(28,187,255,1) 0%, rgba(0,128,128,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(270deg, rgba(28,187,255,1) 0%, rgba(0,128,128,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(270deg, rgba(28,187,255,1) 0%, rgba(0,128,128,1) 100%); /* ie10+ */
+    background: linear-gradient(180deg, rgba(28,187,255,1) 0%, rgba(0,128,128,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1CBBFF', endColorstr='#008080',GradientType=0 ); /* ie6-9 */
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Cabin', sans-serif;
 }
 
-.main, .nav, .ng-scope, .listViewContainer, label, a {
+.main, .nav, .ng-scope, .listViewContainer, label, a, .edit-settings {
   color:white;
 }
 
