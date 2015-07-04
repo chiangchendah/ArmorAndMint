@@ -45,7 +45,7 @@ module.exports = {
 
   // Update owner info
   update: function(req, res, next){
-    console.log(req);
+    console.log(req.body);
     // the route gets passed in with a user ID which express
     // kindly sticks on req.params.userId for us
 
@@ -70,9 +70,8 @@ module.exports = {
         username: result.username,
         bio: result.bio,
         author: result.author,
-        theme: result.theme.title,
+        theme: result.theme,
         email: result.email,
-        email: result.email
         disqus_shortname: result.disqus_shortname
       });
 

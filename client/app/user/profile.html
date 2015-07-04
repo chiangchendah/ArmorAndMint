@@ -7,7 +7,7 @@
     <label>Email Address (for gravatar)</label>
     <input type="text" ng-model="hero.email" />
     <textarea ng-model="hero.bio" />
-      <select id="selectedTheme" ng-options="theme.title for theme in themes" ng-model="hero.theme" ng-change="previewTheme()"></select>
+      <select id="selectedTheme" ng-options="theme.title for theme in themes" ng-model="selectedTheme" ng-change="previewTheme()"></select>
     <label for="#disqus_shortname">Disqus:</label>
     <input type="text" id="disqus_shortname" ng-model="hero.disqus_shortname" placeholder="enter unique identifier to enable commenting" />
     <div class="row">

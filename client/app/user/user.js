@@ -14,6 +14,8 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       // all of these just sort of delegate to the User service
       $scope.update = function() {
         // pass our user entered data to the server
+        $scope.hero.theme = $scope.selectedTheme.title;
+        console.log(JSON.stringify($scope.hero));
         User.update($scope.hero)
           .then(function(data){
             //console.log('->', data);
@@ -77,11 +79,11 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       $scope.getThemes();
 
       $scope.previewTheme = function () {
-        console.log('theme changed to:' + $scope.currentTheme.title);
+        console.log('theme changed to:' + $scope.selectedTheme.title);
 
         function changeCSS(cssFile) {
           console.log(document.getElementById('dynamiccss'));
-          document.getElementById('dynamiccss').setAttribute('href', $scope.currentTheme.path);
+          document.getElementById('dynamiccss').setAttribute('href', $scope.selectedTheme.path);
           console.log(document.getElementById('dynamiccss'));
         }
         changeCSS();
