@@ -16,6 +16,12 @@ module.exports = function(app) {
   // all routes that need auth will have it by adding passport.authenticate()
   // to the beggining of the action parameters list
 
+  app.route('/articles/:id')
+    .get(function(req, res, next){
+      // search the db
+      Article.findById(req, res, next);
+  });
+  
   // main articles routes
   app.route('/api/articles')
     // Call the article controller and ask for a list of articles

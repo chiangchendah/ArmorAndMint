@@ -8,6 +8,23 @@ var utils = require('../config/utils');
 
 module.exports = {
 
+  findById: function(req, res) {
+    Article.findById(req.params.id, function(err, result){
+      if (err){
+        //if passed in id was a pretty_id, mongoose cannot cast it to an objectId
+        Article.findOne({pretty_id: req.params.id}, function(err, result){
+          if(err){
+            return res.redirect('/');
+          }
+          utils.renderIndex(req, res, result);
+
+        });
+      } else {
+        utils.renderIndex(req, res, result);
+      }
+    });
+  },
+
   // return json with the results
   findAll: function(res){
     Article.find(function(err, results){
