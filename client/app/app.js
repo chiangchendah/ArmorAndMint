@@ -74,7 +74,6 @@ app.run(function($rootScope, User, Articles, $location){
     }
     if(window.article){
       Articles.currentArticle = window.article;
-      $location.url('/articles/' + window.article._id)
     }
   }
   catch (e) {
