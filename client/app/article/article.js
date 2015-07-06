@@ -52,7 +52,6 @@ angular.module('lightCMS.article', [])
     .controller('EditArticleController', function($scope, Articles, $state, $stateParams){
       $scope.currentArticle = {};
       $scope.confirmingDelete = false;
-
       $scope.update = function(){
         Articles.update({
           title: $scope.currentArticle.title,
@@ -104,17 +103,14 @@ angular.module('lightCMS.article', [])
           });
     })
 
-    //  create a new article
+    // create a new article
     .controller('CreateArticleController', function($scope, Articles, $location){
       // check for saved data in session storage
-      if (sessionStorage.getItem('title') && sessionStorage.getItem('body')) {
-        $scope.article = {
-          title: sessionStorage.title,
-          body: sessionStorage.body
-        }
-      } else {
-        $scope.article = {};
+      $scope.article = {
+        title: sessionStorage.title || '',
+        body: sessionStorage.body || ''
       }
+      
       $scope.create = function() {
         Articles.create($scope.article)
           .then(
@@ -122,6 +118,9 @@ angular.module('lightCMS.article', [])
               // redirect since we know we are good?
               $location.url('articles');
               toastr.success('Post successfully created');
+              // empty sessionStorage
+              sessionStorage.removeItem('title');
+              sessionStorage.removeItem('body');
             },
             function(err){
               // alert the user to why we couldnt create the article
