@@ -169,18 +169,18 @@ input {
 
 body {
     min-height: 1000px;
-    background-image: url('http://media.giphy.com/media/12A3hKKsewxtGE/giphy.gif');
+    background-image: url('https://s.yimg.com/fz/api/res/1.2/AwW8o88sIIvt6IcDEeYP9A--/YXBwaWQ9c3JjaGRkO2g9MTA4MDtxPTk1O3c9MTkyMA--/http://www.destinycheats.org/wp-content/uploads/2014/06/destiny-wallpaper-005.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    font-family: 'Pacifico', cursive;
-}
-
-.main, .nav, .ng-scope, .listViewContainer, label, a {
-  color:white;
+    font-family: 'Cabin', sans-serif;
 }
 
 .listViewContainer, .timeline-container {
-  background-color: rgba(128,128,128, 0.3);
+  background-color: rgba(128,128,128, 0.2);
+}
+
+.edit-settings{
+  color:black;
 }
 
 form {
@@ -188,6 +188,6 @@ form {
 }
 
 button {
-    background-color: #3399FF;
+    background-color: #545454;
     color: white;
 }

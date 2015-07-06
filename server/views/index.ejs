@@ -45,8 +45,8 @@
          <h1 style="cursor:pointer" ui-sref="articles">LightCMS</h1>
          <nav>
            <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
-           <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
            <button ng-show="isAuthed()" ui-sref="editProfile">Settings</button>
+           <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
            <button ng-show="!isAuthed()" ui-sref="signin">Sign In</button>
            <!-- <img class="edit-settings" ng-show="isAuthed()" ui-sref="editProfile" src="images/cog.png" /> -->
          </nav>
@@ -78,7 +78,8 @@
   window.owner = <%- JSON.stringify(owner) %>;
   window.heroInfo = <%- JSON.stringify(hero) %>;
   window.article = <%- JSON.stringify(article) %>;
-  document.getElementById("dynamiccss").setAttribute('href', heroInfo.path);
+  var path = '/css/themes/' + heroInfo.theme + '.css';
+  document.getElementById("dynamiccss").setAttribute('href', path);
 </script>
 
   <!-- LIBRARY SCRIPTS -->
