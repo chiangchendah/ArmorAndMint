@@ -136,6 +136,5 @@ angular.module('lightCMS.article', [])
         // save changes to sessionStorage
         sessionStorage.setItem('title', scope.title);
         sessionStorage.setItem('body', scope.body);
-      })
-
+      });
     });
