@@ -106,7 +106,15 @@ angular.module('lightCMS.article', [])
 
     //  create a new article
     .controller('CreateArticleController', function($scope, Articles, $location){
-      $scope.article = {};
+      // check for saved data in session storage
+      if (sessionStorage.getItem('title') && sessionStorage.getItem('body')) {
+        $scope.article = {
+          title: sessionStorage.title,
+          body: sessionStorage.body
+        }
+      } else {
+        $scope.article = {};
+      }
       $scope.create = function() {
         Articles.create($scope.article)
           .then(
@@ -121,4 +129,13 @@ angular.module('lightCMS.article', [])
             }
           );
       };
+
+      // watch article, as well as article.title & article.body
+      $scope.$watchCollection('article', function(scope){
+        // scope = {title: "Angular", body: "Keeps an eye out for you."}
+        // save changes to sessionStorage
+        sessionStorage.setItem('title', scope.title);
+        sessionStorage.setItem('body', scope.body);
+      })
+
     });
