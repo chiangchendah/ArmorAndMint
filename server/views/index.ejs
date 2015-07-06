@@ -26,6 +26,8 @@
     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
      <!-- CSS tropical Font ––––––––––––––––––––––––––––––– -->
     <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+    <!-- CSS hr Font ––––––––––––––––––––––––––––––– -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/skeleton.css">
@@ -42,8 +44,8 @@
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
      <div class="nav">
        <header>
-         <h1 style="cursor:pointer" ui-sref="articles">LightCMS</h1>
-         <nav>
+         <h1 style="cursor:pointer" ui-sref="articles" id="logo">LightCMS</h1>
+         <nav id="navbar">
            <button ng-show="isAuthed()" ui-sref="create">+ Add Post</button>
            <button ng-show="isAuthed()" ui-sref="editProfile">Settings</button>
            <button ng-show="isAuthed()" ng-click="signout()">Sign Out</button>
