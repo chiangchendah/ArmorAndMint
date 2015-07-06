@@ -33,7 +33,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       };
 
       $scope.cancel = function(){
-        var path = 'css/themes/' + $scope.hero.theme + '.css';
+        var path = '/css/themes/' + $scope.hero.theme + '.css';
         function changeCSS(cssFile) {
           document.getElementById('dynamiccss').setAttribute('href', path);
         }
@@ -80,7 +80,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       $scope.getThemes();
 
       $scope.previewTheme = function () {
-        var path = 'css/themes/' + $scope.hero.theme + '.css';
+        var path = '/css/themes/' + $scope.hero.theme + '.css';
         console.log(path);
         function changeCSS(cssFile) {
           document.getElementById('dynamiccss').setAttribute('href', path);
