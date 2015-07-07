@@ -160,7 +160,7 @@ input {
 }
 
 .post h2>a {
-    color: #222222;
+    color: blue;
     text-decoration: none;
 }
 .post a:hover {
@@ -189,4 +189,8 @@ button {
 
 #navbar {
   float: right;
+}
+
+h2 {
+  color: blue;
 }
