@@ -12,7 +12,7 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
       // all of these just sort of delegate to the User service
       $scope.update = function() {
         // pass our user entered data to the server
-    
+
         User.update($scope.hero)
           .then(function(data){
             //console.log('->', data);
@@ -25,10 +25,10 @@ angular.module('lightCMS.user', ['lightCMS.Services'])
 
             // set state to a page reload
             $state.go('articles')
-            toastr.success('Bio information updated');
+            toastr.success('Settings updated');
 
           }, function(error){
-            toastr.error('There was an error updating your bio information', err);
+            toastr.error('There was an error updating settings', err);
           });
       };
 
