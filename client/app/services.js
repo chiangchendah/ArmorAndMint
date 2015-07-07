@@ -47,9 +47,9 @@ angular.module('lightCMS.Services', [])
         .success(function(data){
           user.data = data.user;
           $state.go('articles');
-          toastr.success('Successfully signed in');
         })
         .error(function(err){
+          toastr.error('Failed to login', err);
           callback(err);
         });
     };
@@ -61,7 +61,6 @@ angular.module('lightCMS.Services', [])
       $http.post('/signout');
       user.data = null;
       $state.go('articles');
-      toastr.success('Successfully signed out');
     };
 
     return user;
