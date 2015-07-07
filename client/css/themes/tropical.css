@@ -71,6 +71,7 @@ input {
 .main h3 {
     font-size: 27px;
     display: block;
+    color: #62F0BC;
 }
 .main p {
     font-size: 20px;
@@ -153,7 +154,7 @@ input {
 }
 
 .post h2>a {
-    color: #222222;
+    color: #62F0BC;
     text-decoration: none;
 }
 .post a:hover {
@@ -191,6 +192,10 @@ form {
 }
 
 button {
-    background-color: #3399FF;
+    background-color: #62F0BC;
     color: white;
+}
+
+h1 {
+    color: #62F0BC;
 }

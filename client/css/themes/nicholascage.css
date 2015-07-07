@@ -153,7 +153,7 @@ input {
 }
 
 .post h2>a {
-    color: #222222;
+    color: white;
     text-decoration: none;
 }
 .post a:hover {
@@ -180,7 +180,7 @@ body {
 }
 
 .listViewContainer, .timeline-container {
-  background-color: rgba(128,128,128, 0.3);
+  background-color: rgba(128,128,128, 0.1);
 }
 
 form {
